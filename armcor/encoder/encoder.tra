@@ -1,0 +1,20 @@
+*** Creating Trace Output File 'encoder.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup_lpc17xx.o"'
+### List of Objects: adding '"encoder.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "startup_lpc17xx.o" "encoder.o" --strict --scatter "encoder.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\encoder.map" -o "encoder.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'encoder.axf'
+### ADS-LD Command File: 'encoder.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'encoder.lnp', Handle=0x000001A8
+### Writing '.lnp' file
+### ADS-LD Command file 'encoder.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

@@ -1,0 +1,18 @@
+___awdiv: CODE, 1079 0 91
+_init: CODE, 744 0 29
+__stringtab: STRING, 3 0 6
+__stringdata: STRING, 19 0 3
+_dpowers: STRING, 9 0 10
+_main: CODE, 1683 0 361
+_keypad: CODE, 1279 0 187
+_atoi: CODE, 1170 0 109
+__initialization: CODE, 2044 0 0
+___lwdiv: CODE, 891 0 62
+_data: CODE, 1016 0 63
+_isdigit: CODE, 730 0 14
+_sprintf: CODE, 1466 0 217
+_lcd: CODE, 773 0 31
+___lwmod: CODE, 839 0 52
+___wmul: CODE, 804 0 35
+_command: CODE, 953 0 63
+Total: 1333

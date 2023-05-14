@@ -1,0 +1,131 @@
+   1               		.file	"bling2.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	main
+  19               	main:
+  20               	.LFB6:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LM2:
+  25 0000 8FEF      		ldi r24,lo8(-1)
+  26 0002 8ABB      		out 58-0x20,r24
+  27               	.LM3:
+  28 0004 87BB      		out 55-0x20,r24
+  29               	.LM4:
+  30 0006 84BB      		out 52-0x20,r24
+  31               	.LM5:
+  32 0008 81BB      		out 49-0x20,r24
+  33               	.LM6:
+  34 000a 82B9      		out 34-0x20,r24
+  35               	.LM7:
+  36 000c 8093 6100 		sts 97,r24
+  37               	.LM8:
+  38 0010 8093 6400 		sts 100,r24
+  39               	.LVL0:
+  40               	.L2:
+  41               	.LM9:
+  42 0014 8FEF      		ldi r24,lo8(-1)
+  43               	.LVL1:
+  44 0016 8BBB      		out 59-0x20,r24
+  45               	.LM10:
+  46 0018 88BB      		out 56-0x20,r24
+  47               	.LM11:
+  48 001a 85BB      		out 53-0x20,r24
+  49               	.LM12:
+  50 001c 82BB      		out 50-0x20,r24
+  51               	.LM13:
+  52 001e 83B9      		out 35-0x20,r24
+  53               	.LM14:
+  54 0020 8093 6200 		sts 98,r24
+  55               	.LM15:
+  56 0024 8093 6500 		sts 101,r24
+  57 0028 28EB      		ldi r18,lo8(3000)
+  58 002a 3BE0      		ldi r19,hi8(3000)
+  59               	.LVL2:
+  60               	.L3:
+  61               	.LBB18:
+  62               	.LBB19:
+  63               	.LBB20:
+  64               	.LBB21:
+  65               	.LM16:
+  66 002c 88EC      		ldi r24,lo8(200)
+  67 002e 90E0      		ldi r25,hi8(200)
+  68               	.LVL3:
+  69               	/* #APP */
+  70 0030 0197      		1: sbiw r24,1
+  71 0032 01F4      		brne 1b
+  72               	/* #NOAPP */
+  73               	.LBE21:
+  74               	.LBE20:
+  75               	.LM17:
+  76 0034 2150      		subi r18,lo8(-(-1))
+  77 0036 3040      		sbci r19,hi8(-(-1))
+  78               	.LM18:
+  79 0038 01F4      		brne .L3
+  80               	.LBE19:
+  81               	.LBE18:
+  82               	.LM19:
+  83 003a 1BBA      		out 59-0x20,__zero_reg__
+  84               	.LM20:
+  85 003c 18BA      		out 56-0x20,__zero_reg__
+  86               	.LM21:
+  87 003e 15BA      		out 53-0x20,__zero_reg__
+  88               	.LM22:
+  89 0040 12BA      		out 50-0x20,__zero_reg__
+  90               	.LM23:
+  91 0042 13B8      		out 35-0x20,__zero_reg__
+  92               	.LM24:
+  93 0044 1092 6200 		sts 98,__zero_reg__
+  94               	.LM25:
+  95 0048 1092 6500 		sts 101,__zero_reg__
+  96 004c 28EB      		ldi r18,lo8(3000)
+  97 004e 3BE0      		ldi r19,hi8(3000)
+  98               	.LVL4:
+  99               	.L5:
+ 100               	.LBB22:
+ 101               	.LBB23:
+ 102               	.LBB24:
+ 103               	.LBB25:
+ 104               	.LM26:
+ 105 0050 88EC      		ldi r24,lo8(200)
+ 106 0052 90E0      		ldi r25,hi8(200)
+ 107               	.LVL5:
+ 108               	/* #APP */
+ 109 0054 0197      		1: sbiw r24,1
+ 110 0056 01F4      		brne 1b
+ 111               	/* #NOAPP */
+ 112               	.LBE25:
+ 113               	.LBE24:
+ 114               	.LM27:
+ 115 0058 2150      		subi r18,lo8(-(-1))
+ 116 005a 3040      		sbci r19,hi8(-(-1))
+ 117               	.LM28:
+ 118 005c 01F4      		brne .L5
+ 119 005e 00C0      		rjmp .L2
+ 120               	.LBE23:
+ 121               	.LBE22:
+ 122               	/* epilogue: frame size=0 */
+ 123               	/* epilogue: noreturn */
+ 124               	/* epilogue end (size=0) */
+ 125               	/* function main size 56 (56) */
+ 126               	.LFE6:
+ 152               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 bling2.c
+C:\users\student\Temp/ccEqoWJF.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/ccEqoWJF.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/ccEqoWJF.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/ccEqoWJF.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/ccEqoWJF.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/ccEqoWJF.s:19     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

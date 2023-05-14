@@ -1,0 +1,3 @@
+roll no  maths  phy   che   total   avg   percentage  name
+1        58.0   45.0  78.0  181.0   60.3  60.3        ram
+2        87.0   98.0  56.0  241.0   80.3  80.3        vasu

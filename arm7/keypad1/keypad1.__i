@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\Keil\ARM\INC" -I "C:\Keil\ARM\INC\Philips" -o "keypad1.o" --omf_browse "keypad1.crf" --depend "keypad1.d" "keypad1.c"

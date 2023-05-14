@@ -1,0 +1,16 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\users\student\Desktop\suhaib\armcor\bling2\bling2.uvproj
+Project File Date:  03/09/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling startup_LPC17xx.s...
+compiling blink2.c...
+blink2.c(25): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=420 RO-data=348 RW-data=0 ZI-data=608  
+"bling2.axf" - 0 Error(s), 1 Warning(s).

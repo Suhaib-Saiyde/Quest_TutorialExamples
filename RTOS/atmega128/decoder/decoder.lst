@@ -1,0 +1,58 @@
+   1               		.file	"decoder.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	main
+  19               	main:
+  20               	.LFB6:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LM2:
+  25 0000 9FEF      		ldi r25,lo8(-1)
+  26 0002 92B9      		out 34-0x20,r25
+  27               	.LM3:
+  28 0004 88EF      		ldi r24,lo8(-8)
+  29 0006 87BB      		out 55-0x20,r24
+  30               	.LM4:
+  31 0008 93B9      		out 35-0x20,r25
+  32               	.L2:
+  33               	.LM5:
+  34 000a 86B3      		in r24,54-0x20
+  35 000c 90E0      		ldi r25,lo8(0)
+  36 000e 8095      		com r24
+  37 0010 9095      		com r25
+  38 0012 8770      		andi r24,lo8(7)
+  39 0014 9070      		andi r25,hi8(7)
+  40 0016 21E0      		ldi r18,lo8(1)
+  41 0018 30E0      		ldi r19,hi8(1)
+  42 001a 00C0      		rjmp 2f
+  43 001c 220F      	1:	lsl r18
+  44 001e 331F      		rol r19
+  45 0020 8A95      	2:	dec r24
+  46 0022 02F4      		brpl 1b
+  47 0024 23B9      		out 35-0x20,r18
+  48 0026 00C0      		rjmp .L2
+  49               	/* epilogue: frame size=0 */
+  50               	/* epilogue: noreturn */
+  51               	/* epilogue end (size=0) */
+  52               	/* function main size 21 (21) */
+  53               	.LFE6:
+  79               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 decoder.c
+C:\users\student\Temp/cc7PJP6b.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/cc7PJP6b.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/cc7PJP6b.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/cc7PJP6b.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/cc7PJP6b.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/cc7PJP6b.s:19     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

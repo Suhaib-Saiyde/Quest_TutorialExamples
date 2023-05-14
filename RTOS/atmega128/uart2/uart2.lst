@@ -1,0 +1,243 @@
+   1               		.file	"uart2.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	tx
+  19               	tx:
+  20               	.LFB6:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LVL0:
+  25 0000 FC01      		movw r30,r24
+  26 0002 00C0      		rjmp .L2
+  27               	.LVL1:
+  28               	.L3:
+  29               	.LM2:
+  30 0004 8CB9      		out 44-0x20,r24
+  31               	.L4:
+  32               	.LM3:
+  33 0006 5D9B      		sbis 43-0x20,5
+  34 0008 00C0      		rjmp .L4
+  35 000a 3196      		adiw r30,1
+  36               	.LVL2:
+  37               	.L2:
+  38               	.LM4:
+  39 000c 8081      		ld r24,Z
+  40               	.LVL3:
+  41 000e 8823      		tst r24
+  42 0010 01F4      		brne .L3
+  43               	/* epilogue: frame size=0 */
+  44 0012 0895      		ret
+  45               	/* epilogue end (size=1) */
+  46               	/* function tx size 10 (9) */
+  47               	.LFE6:
+  49               		.data
+  50               	.LC0:
+  51 0000 454E 5445 		.string	"ENTER THE PASSWORD\r\n"
+  51      5220 5448 
+  51      4520 5041 
+  51      5353 574F 
+  51      5244 0D0A 
+  52               	.LC1:
+  53 0015 7061 7373 		.string	"password"
+  53      776F 7264 
+  53      00
+  54               	.LC2:
+  55 001e 0D0A 4143 		.string	"\r\nACCESS GRANTED\r\n"
+  55      4345 5353 
+  55      2047 5241 
+  55      4E54 4544 
+  55      0D0A 00
+  56               	.LC3:
+  57 0031 0D0A 5452 		.string	"\r\nTRY AGAIN\r\n"
+  57      5920 4147 
+  57      4149 4E0D 
+  57      0A00 
+  58               		.text
+  59               	.global	main
+  61               	main:
+  62               	.LFB7:
+  63               	.LM5:
+  64               	/* prologue: frame size=78 */
+  65 0014 8F92      		push r8
+  66 0016 9F92      		push r9
+  67 0018 AF92      		push r10
+  68 001a BF92      		push r11
+  69 001c CF92      		push r12
+  70 001e DF92      		push r13
+  71 0020 EF92      		push r14
+  72 0022 FF92      		push r15
+  73 0024 0F93      		push r16
+  74 0026 1F93      		push r17
+  75 0028 CF93      		push r28
+  76 002a DF93      		push r29
+  77 002c CDB7      		in r28,__SP_L__
+  78 002e DEB7      		in r29,__SP_H__
+  79 0030 CE54      		subi r28,lo8(78)
+  80 0032 D040      		sbci r29,hi8(78)
+  81 0034 0FB6      		in __tmp_reg__,__SREG__
+  82 0036 F894      		cli
+  83 0038 DEBF      		out __SP_H__,r29
+  84 003a 0FBE      		out __SREG__,__tmp_reg__
+  85 003c CDBF      		out __SP_L__,r28
+  86               	/* prologue end (size=21) */
+  87               	.LM6:
+  88 003e 1BB8      		out 43-0x20,__zero_reg__
+  89               	.LM7:
+  90 0040 88E1      		ldi r24,lo8(24)
+  91 0042 8AB9      		out 42-0x20,r24
+  92               	.LM8:
+  93 0044 86E0      		ldi r24,lo8(6)
+  94 0046 8093 9500 		sts 149,r24
+  95               	.LM9:
+  96 004a 87E6      		ldi r24,lo8(103)
+  97 004c 89B9      		out 41-0x20,r24
+  98               	.LM10:
+  99 004e DE01      		movw r26,r28
+ 100 0050 DA96      		adiw r26,58
+ 101 0052 E0E0      		ldi r30,lo8(.LC0)
+ 102 0054 F0E0      		ldi r31,hi8(.LC0)
+ 103 0056 85E1      		ldi r24,lo8(21)
+ 104               	.L11:
+ 105               	.LM11:
+ 106 0058 0190      		ld r0,Z+
+ 107 005a 0D92      		st X+,r0
+ 108 005c 8150      		subi r24,lo8(-(-1))
+ 109 005e 01F4      		brne .L11
+ 110 0060 DE01      		movw r26,r28
+ 111 0062 1196      		adiw r26,1
+ 112 0064 E0E0      		ldi r30,lo8(.LC1)
+ 113 0066 F0E0      		ldi r31,hi8(.LC1)
+ 114 0068 89E0      		ldi r24,lo8(9)
+ 115               	.L12:
+ 116 006a 0190      		ld r0,Z+
+ 117 006c 0D92      		st X+,r0
+ 118 006e 8150      		subi r24,lo8(-(-1))
+ 119 0070 01F4      		brne .L12
+ 120 0072 DE01      		movw r26,r28
+ 121 0074 9796      		adiw r26,39
+ 122 0076 E0E0      		ldi r30,lo8(.LC2)
+ 123 0078 F0E0      		ldi r31,hi8(.LC2)
+ 124 007a 83E1      		ldi r24,lo8(19)
+ 125               	.L13:
+ 126 007c 0190      		ld r0,Z+
+ 127 007e 0D92      		st X+,r0
+ 128 0080 8150      		subi r24,lo8(-(-1))
+ 129 0082 01F4      		brne .L13
+ 130 0084 DE01      		movw r26,r28
+ 131 0086 1A96      		adiw r26,10
+ 132 0088 E0E0      		ldi r30,lo8(.LC3)
+ 133 008a F0E0      		ldi r31,hi8(.LC3)
+ 134 008c 8EE0      		ldi r24,lo8(14)
+ 135               	.L14:
+ 136 008e 0190      		ld r0,Z+
+ 137 0090 0D92      		st X+,r0
+ 138 0092 8150      		subi r24,lo8(-(-1))
+ 139 0094 01F4      		brne .L14
+ 140               	.LM12:
+ 141 0096 2AE3      		ldi r18,lo8(58)
+ 142 0098 822E      		mov r8,r18
+ 143 009a 912C      		mov r9,__zero_reg__
+ 144 009c 8C0E      		add r8,r28
+ 145 009e 9D1E      		adc r9,r29
+ 146               	.LM13:
+ 147 00a0 8E01      		movw r16,r28
+ 148 00a2 085E      		subi r16,lo8(-(24))
+ 149 00a4 1F4F      		sbci r17,hi8(-(24))
+ 150               	.LM14:
+ 151 00a6 5E01      		movw r10,r28
+ 152 00a8 0894      		sec
+ 153 00aa A11C      		adc r10,__zero_reg__
+ 154 00ac B11C      		adc r11,__zero_reg__
+ 155               	.LM15:
+ 156 00ae 9AE0      		ldi r25,lo8(10)
+ 157 00b0 C92E      		mov r12,r25
+ 158 00b2 D12C      		mov r13,__zero_reg__
+ 159 00b4 CC0E      		add r12,r28
+ 160 00b6 DD1E      		adc r13,r29
+ 161               	.LM16:
+ 162 00b8 87E2      		ldi r24,lo8(39)
+ 163 00ba E82E      		mov r14,r24
+ 164 00bc F12C      		mov r15,__zero_reg__
+ 165 00be EC0E      		add r14,r28
+ 166 00c0 FD1E      		adc r15,r29
+ 167               	.L40:
+ 168               	.LM17:
+ 169 00c2 C401      		movw r24,r8
+ 170 00c4 0E94 0000 		call tx
+ 171 00c8 20E0      		ldi r18,lo8(0)
+ 172 00ca 30E0      		ldi r19,hi8(0)
+ 173               	.LVL4:
+ 174               	.L43:
+ 175               	.LM18:
+ 176 00cc 5F9B      		sbis 43-0x20,7
+ 177 00ce 00C0      		rjmp .L43
+ 178               	.LM19:
+ 179 00d0 8CB1      		in r24,44-0x20
+ 180 00d2 F801      		movw r30,r16
+ 181 00d4 E20F      		add r30,r18
+ 182 00d6 F31F      		adc r31,r19
+ 183 00d8 8083      		st Z,r24
+ 184               	.LM20:
+ 185 00da 8D30      		cpi r24,lo8(13)
+ 186 00dc 01F4      		brne .L18
+ 187               	.LM21:
+ 188 00de 1082      		st Z,__zero_reg__
+ 189               	.LM22:
+ 190 00e0 B801      		movw r22,r16
+ 191 00e2 C501      		movw r24,r10
+ 192 00e4 0E94 0000 		call strcmp
+ 193               	.LVL5:
+ 194 00e8 892B      		or r24,r25
+ 195 00ea 01F4      		brne .L38
+ 196 00ec 00C0      		rjmp .L20
+ 197               	.LVL6:
+ 198               	.L18:
+ 199               	.LM23:
+ 200 00ee 8AE2      		ldi r24,lo8(42)
+ 201 00f0 8CB9      		out 44-0x20,r24
+ 202               	.L22:
+ 203               	.LM24:
+ 204 00f2 5D9B      		sbis 43-0x20,5
+ 205 00f4 00C0      		rjmp .L22
+ 206               	.LM25:
+ 207 00f6 2F5F      		subi r18,lo8(-(1))
+ 208 00f8 3F4F      		sbci r19,hi8(-(1))
+ 209 00fa 00C0      		rjmp .L43
+ 210               	.LVL7:
+ 211               	.L20:
+ 212               	.LM26:
+ 213 00fc C701      		movw r24,r14
+ 214 00fe 00C0      		rjmp .L42
+ 215               	.L38:
+ 216               	.LM27:
+ 217 0100 C601      		movw r24,r12
+ 218               	.L42:
+ 219 0102 0E94 0000 		call tx
+ 220 0106 00C0      		rjmp .L40
+ 221               	/* epilogue: frame size=78 */
+ 222               	/* epilogue: noreturn */
+ 223               	/* epilogue end (size=0) */
+ 224               	/* function main size 126 (105) */
+ 225               	.LFE7:
+ 259               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart2.c
+C:\users\student\Temp/ccoomzQD.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/ccoomzQD.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/ccoomzQD.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/ccoomzQD.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/ccoomzQD.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/ccoomzQD.s:19     .text:00000000 tx
+C:\users\student\Temp/ccoomzQD.s:61     .text:00000014 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+strcmp

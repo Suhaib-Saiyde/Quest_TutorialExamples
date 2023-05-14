@@ -1,0 +1,92 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\users\student\Desktop\suhaib\arm7\adc1\adc1.uvproj
+Project File Date:  02/27/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Startup.s...
+compiling adc1.c...
+adc1.c(34): warning:  #61-D: integer operation result is out of range
+adc1.c(34): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(35): error:  #20: identifier "ad0GDR" is undefined
+adc1.c(36): error:  #20: identifier "d" is undefined
+adc1.c(38): error:  #20: identifier "j" is undefined
+adc1.c(40): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(34): warning:  #61-D: integer operation result is out of range
+adc1.c(34): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(35): error:  #20: identifier "ad0GDR" is undefined
+adc1.c(38): error:  #20: identifier "j" is undefined
+adc1.c(40): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(34): warning:  #61-D: integer operation result is out of range
+adc1.c(34): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(35): error:  #20: identifier "ad0GDR" is undefined
+adc1.c(40): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(34): warning:  #61-D: integer operation result is out of range
+adc1.c(34): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(40): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=1588 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"adc1.axf" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(34): warning:  #61-D: integer operation result is out of range
+adc1.c(34): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(40): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=1596 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"adc1.axf" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(34): warning:  #61-D: integer operation result is out of range
+adc1.c(34): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(40): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=1600 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"adc1.axf" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(34): warning:  #61-D: integer operation result is out of range
+adc1.c(34): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(40): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=1600 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"adc1.axf" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(35): warning:  #61-D: integer operation result is out of range
+adc1.c(35): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(44): warning:  #61-D: integer operation result is out of range
+adc1.c(44): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(51): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=1724 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"adc1.axf" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling adc1.c...
+adc1.c(35): warning:  #61-D: integer operation result is out of range
+adc1.c(35): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(44): warning:  #61-D: integer operation result is out of range
+adc1.c(44): warning:  #68-D: integer conversion resulted in a change of sign
+adc1.c(51): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=1724 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"adc1.axf" - 0 Error(s), 5 Warning(s).

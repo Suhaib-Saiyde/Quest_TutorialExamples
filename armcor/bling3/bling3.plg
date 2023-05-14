@@ -1,0 +1,16 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\users\student\Desktop\suhaib\armcor\bling3\bling3.uvproj
+Project File Date:  03/09/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling startup_LPC17xx.s...
+compiling bling3.c...
+linking...
+Program Size: Code=528 RO-data=240 RW-data=0 ZI-data=608  
+FromELF: creating hex file...
+"bling3.axf" - 0 Error(s), 0 Warning(s).

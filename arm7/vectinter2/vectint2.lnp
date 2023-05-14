@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "vect2.o" --strict --scatter "vectint2.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\vectint2.map" -o "vectint2.axf"

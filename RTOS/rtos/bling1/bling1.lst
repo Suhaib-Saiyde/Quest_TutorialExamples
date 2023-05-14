@@ -1,0 +1,277 @@
+GAS LISTING C:\users\student\Temp/ccrV0v5S.s 			page 1
+
+
+   1               		.file	"bling1.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	bling
+  11               		.type	bling, @function
+  12               	bling:
+  13               	/* prologue: frame size=0 */
+  14 0000 CF93      		push r28
+  15 0002 DF93      		push r29
+  16 0004 CDB7      		in r28,__SP_L__
+  17 0006 DEB7      		in r29,__SP_H__
+  18               	/* prologue end (size=4) */
+  19               	.L2:
+  20 0008 EBE3      		ldi r30,lo8(59)
+  21 000a F0E0      		ldi r31,hi8(59)
+  22 000c 8FEF      		ldi r24,lo8(-1)
+  23 000e 8083      		st Z,r24
+  24 0010 24EF      		ldi r18,lo8(500)
+  25 0012 31E0      		ldi r19,hi8(500)
+  26 0014 40E0      		ldi r20,lo8(0)
+  27 0016 60E0      		ldi r22,lo8(0)
+  28 0018 80E0      		ldi r24,lo8(0)
+  29 001a 0E94 0000 		call OSTimeDlyHMSM
+  30 001e EBE3      		ldi r30,lo8(59)
+  31 0020 F0E0      		ldi r31,hi8(59)
+  32 0022 1082      		st Z,__zero_reg__
+  33 0024 2AEF      		ldi r18,lo8(250)
+  34 0026 30E0      		ldi r19,hi8(250)
+  35 0028 40E0      		ldi r20,lo8(0)
+  36 002a 60E0      		ldi r22,lo8(0)
+  37 002c 80E0      		ldi r24,lo8(0)
+  38 002e 0E94 0000 		call OSTimeDlyHMSM
+  39 0032 85E0      		ldi r24,lo8(5)
+  40 0034 0E94 0000 		call OSTaskResume
+  41 0038 00C0      		rjmp .L2
+  42               	/* epilogue: frame size=0 */
+  43               	/* epilogue: noreturn */
+  44               	/* epilogue end (size=0) */
+  45               	/* function bling size 29 (25) */
+  46               		.size	bling, .-bling
+  47               		.data
+  48               	.LC0:
+  49 0000 7177 6572 		.string	"qwerty"
+  49      7479 00
+  50 0007 0000 0000 		.skip 13,0
+  50      0000 0000 
+  50      0000 0000 
+  50      00
+  51               		.text
+  52               	.global	uart
+  53               		.type	uart, @function
+GAS LISTING C:\users\student\Temp/ccrV0v5S.s 			page 2
+
+
+  54               	uart:
+  55               	/* prologue: frame size=27 */
+  56 003a CF93      		push r28
+  57 003c DF93      		push r29
+  58 003e CDB7      		in r28,__SP_L__
+  59 0040 DEB7      		in r29,__SP_H__
+  60 0042 6B97      		sbiw r28,27
+  61 0044 0FB6      		in __tmp_reg__,__SREG__
+  62 0046 F894      		cli
+  63 0048 DEBF      		out __SP_H__,r29
+  64 004a 0FBE      		out __SREG__,__tmp_reg__
+  65 004c CDBF      		out __SP_L__,r28
+  66               	/* prologue end (size=10) */
+  67 004e CE01      		movw r24,r28
+  68 0050 0396      		adiw r24,3
+  69 0052 988F      		std Y+24,r25
+  70 0054 8F8B      		std Y+23,r24
+  71 0056 A0E0      		ldi r26,lo8(.LC0)
+  72 0058 B0E0      		ldi r27,hi8(.LC0)
+  73 005a BA8F      		std Y+26,r27
+  74 005c A98F      		std Y+25,r26
+  75 005e B7E0      		ldi r27,lo8(7)
+  76 0060 BB8F      		std Y+27,r27
+  77               	.L5:
+  78 0062 E98D      		ldd r30,Y+25
+  79 0064 FA8D      		ldd r31,Y+26
+  80 0066 0080      		ld r0,Z
+  81 0068 898D      		ldd r24,Y+25
+  82 006a 9A8D      		ldd r25,Y+26
+  83 006c 0196      		adiw r24,1
+  84 006e 9A8F      		std Y+26,r25
+  85 0070 898F      		std Y+25,r24
+  86 0072 AF89      		ldd r26,Y+23
+  87 0074 B88D      		ldd r27,Y+24
+  88 0076 0C92      		st X,r0
+  89 0078 EF89      		ldd r30,Y+23
+  90 007a F88D      		ldd r31,Y+24
+  91 007c 3196      		adiw r30,1
+  92 007e F88F      		std Y+24,r31
+  93 0080 EF8B      		std Y+23,r30
+  94 0082 FB8D      		ldd r31,Y+27
+  95 0084 F150      		subi r31,lo8(-(-1))
+  96 0086 FB8F      		std Y+27,r31
+  97 0088 8B8D      		ldd r24,Y+27
+  98 008a 8823      		tst r24
+  99 008c 01F4      		brne .L5
+ 100 008e 8DE0      		ldi r24,lo8(13)
+ 101 0090 FE01      		movw r30,r28
+ 102 0092 3A96      		adiw r30,10
+ 103 0094 DF01      		movw r26,r30
+ 104 0096 982F      		mov r25,r24
+ 105 0098 1D92      		st X+,__zero_reg__
+ 106 009a 9A95      	        dec r25
+ 107 009c 01F4      		brne .-6
+ 108               	.L6:
+ 109 009e 1A82      		std Y+2,__zero_reg__
+ 110 00a0 1982      		std Y+1,__zero_reg__
+GAS LISTING C:\users\student\Temp/ccrV0v5S.s 			page 3
+
+
+ 111 00a2 00C0      		rjmp .L7
+ 112               	.L8:
+ 113 00a4 ACE2      		ldi r26,lo8(44)
+ 114 00a6 B0E0      		ldi r27,hi8(44)
+ 115 00a8 2981      		ldd r18,Y+1
+ 116 00aa 3A81      		ldd r19,Y+2
+ 117 00ac CE01      		movw r24,r28
+ 118 00ae 0396      		adiw r24,3
+ 119 00b0 FC01      		movw r30,r24
+ 120 00b2 E20F      		add r30,r18
+ 121 00b4 F31F      		adc r31,r19
+ 122 00b6 8081      		ld r24,Z
+ 123 00b8 8C93      		st X,r24
+ 124               	.L9:
+ 125 00ba EBE2      		ldi r30,lo8(43)
+ 126 00bc F0E0      		ldi r31,hi8(43)
+ 127 00be 8081      		ld r24,Z
+ 128 00c0 882F      		mov r24,r24
+ 129 00c2 90E0      		ldi r25,lo8(0)
+ 130 00c4 8072      		andi r24,lo8(32)
+ 131 00c6 9070      		andi r25,hi8(32)
+ 132 00c8 0097      		sbiw r24,0
+ 133 00ca 01F0      		breq .L9
+ 134 00cc 8981      		ldd r24,Y+1
+ 135 00ce 9A81      		ldd r25,Y+2
+ 136 00d0 0196      		adiw r24,1
+ 137 00d2 9A83      		std Y+2,r25
+ 138 00d4 8983      		std Y+1,r24
+ 139               	.L7:
+ 140 00d6 2981      		ldd r18,Y+1
+ 141 00d8 3A81      		ldd r19,Y+2
+ 142 00da CE01      		movw r24,r28
+ 143 00dc 0396      		adiw r24,3
+ 144 00de FC01      		movw r30,r24
+ 145 00e0 E20F      		add r30,r18
+ 146 00e2 F31F      		adc r31,r19
+ 147 00e4 8081      		ld r24,Z
+ 148 00e6 8823      		tst r24
+ 149 00e8 01F4      		brne .L8
+ 150 00ea 24EF      		ldi r18,lo8(500)
+ 151 00ec 31E0      		ldi r19,hi8(500)
+ 152 00ee 40E0      		ldi r20,lo8(0)
+ 153 00f0 60E0      		ldi r22,lo8(0)
+ 154 00f2 80E0      		ldi r24,lo8(0)
+ 155 00f4 0E94 0000 		call OSTimeDlyHMSM
+ 156 00f8 86E0      		ldi r24,lo8(6)
+ 157 00fa 0E94 0000 		call OSTaskResume
+ 158 00fe 85E0      		ldi r24,lo8(5)
+ 159 0100 0E94 0000 		call OSTaskSuspend
+ 160 0104 00C0      		rjmp .L6
+ 161               	/* epilogue: frame size=27 */
+ 162               	/* epilogue: noreturn */
+ 163               	/* epilogue end (size=0) */
+ 164               	/* function uart size 102 (92) */
+ 165               		.size	uart, .-uart
+ 166               	.global	main
+ 167               		.type	main, @function
+GAS LISTING C:\users\student\Temp/ccrV0v5S.s 			page 4
+
+
+ 168               	main:
+ 169               	/* prologue: frame size=0 */
+ 170 0106 CF93      		push r28
+ 171 0108 DF93      		push r29
+ 172 010a CDB7      		in r28,__SP_L__
+ 173 010c DEB7      		in r29,__SP_H__
+ 174               	/* prologue end (size=4) */
+ 175 010e EAE3      		ldi r30,lo8(58)
+ 176 0110 F0E0      		ldi r31,hi8(58)
+ 177 0112 8FEF      		ldi r24,lo8(-1)
+ 178 0114 8083      		st Z,r24
+ 179 0116 EBE2      		ldi r30,lo8(43)
+ 180 0118 F0E0      		ldi r31,hi8(43)
+ 181 011a 1082      		st Z,__zero_reg__
+ 182 011c EAE2      		ldi r30,lo8(42)
+ 183 011e F0E0      		ldi r31,hi8(42)
+ 184 0120 88E1      		ldi r24,lo8(24)
+ 185 0122 8083      		st Z,r24
+ 186 0124 E5E9      		ldi r30,lo8(149)
+ 187 0126 F0E0      		ldi r31,hi8(149)
+ 188 0128 86E0      		ldi r24,lo8(6)
+ 189 012a 8083      		st Z,r24
+ 190 012c E9E2      		ldi r30,lo8(41)
+ 191 012e F0E0      		ldi r31,hi8(41)
+ 192 0130 87E6      		ldi r24,lo8(103)
+ 193 0132 8083      		st Z,r24
+ 194 0134 E7E5      		ldi r30,lo8(87)
+ 195 0136 F0E0      		ldi r31,hi8(87)
+ 196 0138 81E0      		ldi r24,lo8(1)
+ 197 013a 8083      		st Z,r24
+ 198 013c E3E5      		ldi r30,lo8(83)
+ 199 013e F0E0      		ldi r31,hi8(83)
+ 200 0140 87E0      		ldi r24,lo8(7)
+ 201 0142 8083      		st Z,r24
+ 202 0144 0E94 0000 		call OSInit
+ 203 0148 80E0      		ldi r24,lo8(s1+127)
+ 204 014a 90E0      		ldi r25,hi8(s1+127)
+ 205 014c E0E0      		ldi r30,lo8(gs(bling))
+ 206 014e F0E0      		ldi r31,hi8(gs(bling))
+ 207 0150 26E0      		ldi r18,lo8(6)
+ 208 0152 AC01      		movw r20,r24
+ 209 0154 6FEF      		ldi r22,lo8(255)
+ 210 0156 70E0      		ldi r23,hi8(255)
+ 211 0158 CF01      		movw r24,r30
+ 212 015a 0E94 0000 		call OSTaskCreate
+ 213 015e 80E0      		ldi r24,lo8(s2+127)
+ 214 0160 90E0      		ldi r25,hi8(s2+127)
+ 215 0162 E0E0      		ldi r30,lo8(gs(uart))
+ 216 0164 F0E0      		ldi r31,hi8(gs(uart))
+ 217 0166 25E0      		ldi r18,lo8(5)
+ 218 0168 AC01      		movw r20,r24
+ 219 016a 6FEF      		ldi r22,lo8(255)
+ 220 016c 70E0      		ldi r23,hi8(255)
+ 221 016e CF01      		movw r24,r30
+ 222 0170 0E94 0000 		call OSTaskCreate
+ 223 0174 0E94 0000 		call OSStart
+ 224               	/* epilogue: frame size=0 */
+GAS LISTING C:\users\student\Temp/ccrV0v5S.s 			page 5
+
+
+ 225 0178 DF91      		pop r29
+ 226 017a CF91      		pop r28
+ 227 017c 0895      		ret
+ 228               	/* epilogue end (size=3) */
+ 229               	/* function main size 60 (53) */
+ 230               		.size	main, .-main
+ 231               		.comm s1,128,1
+ 232               		.comm s2,128,1
+ 233               	/* File "bling1.c": code  191 = 0x00bf ( 170), prologues  18, epilogues   3 */
+GAS LISTING C:\users\student\Temp/ccrV0v5S.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 bling1.c
+C:\users\student\Temp/ccrV0v5S.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/ccrV0v5S.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/ccrV0v5S.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/ccrV0v5S.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/ccrV0v5S.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/ccrV0v5S.s:12     .text:00000000 bling
+C:\users\student\Temp/ccrV0v5S.s:54     .text:0000003a uart
+C:\users\student\Temp/ccrV0v5S.s:168    .text:00000106 main
+                            *COM*:00000080 s1
+                            *COM*:00000080 s2
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSTimeDlyHMSM
+OSTaskResume
+OSTaskSuspend
+OSInit
+OSTaskCreate
+OSStart

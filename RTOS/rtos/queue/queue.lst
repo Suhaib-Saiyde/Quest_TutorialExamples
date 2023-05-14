@@ -1,0 +1,489 @@
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 1
+
+
+   1               		.file	"queue.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	main
+  11               		.type	main, @function
+  12               	main:
+  13               	/* prologue: frame size=0 */
+  14 0000 CF93      		push r28
+  15 0002 DF93      		push r29
+  16 0004 CDB7      		in r28,__SP_L__
+  17 0006 DEB7      		in r29,__SP_H__
+  18               	/* prologue end (size=4) */
+  19 0008 EBE2      		ldi r30,lo8(43)
+  20 000a F0E0      		ldi r31,hi8(43)
+  21 000c 1082      		st Z,__zero_reg__
+  22 000e EAE2      		ldi r30,lo8(42)
+  23 0010 F0E0      		ldi r31,hi8(42)
+  24 0012 88E1      		ldi r24,lo8(24)
+  25 0014 8083      		st Z,r24
+  26 0016 E5E9      		ldi r30,lo8(149)
+  27 0018 F0E0      		ldi r31,hi8(149)
+  28 001a 86E0      		ldi r24,lo8(6)
+  29 001c 8083      		st Z,r24
+  30 001e E9E2      		ldi r30,lo8(41)
+  31 0020 F0E0      		ldi r31,hi8(41)
+  32 0022 87E6      		ldi r24,lo8(103)
+  33 0024 8083      		st Z,r24
+  34 0026 E6E2      		ldi r30,lo8(38)
+  35 0028 F0E0      		ldi r31,hi8(38)
+  36 002a 87E8      		ldi r24,lo8(-121)
+  37 002c 8083      		st Z,r24
+  38 002e E3E5      		ldi r30,lo8(83)
+  39 0030 F0E0      		ldi r31,hi8(83)
+  40 0032 87E0      		ldi r24,lo8(7)
+  41 0034 8083      		st Z,r24
+  42 0036 E7E5      		ldi r30,lo8(87)
+  43 0038 F0E0      		ldi r31,hi8(87)
+  44 003a 81E0      		ldi r24,lo8(1)
+  45 003c 8083      		st Z,r24
+  46 003e 0E94 0000 		call OSInit
+  47 0042 80E0      		ldi r24,lo8(s1+127)
+  48 0044 90E0      		ldi r25,hi8(s1+127)
+  49 0046 E0E0      		ldi r30,lo8(gs(adc1))
+  50 0048 F0E0      		ldi r31,hi8(gs(adc1))
+  51 004a 24E0      		ldi r18,lo8(4)
+  52 004c AC01      		movw r20,r24
+  53 004e 6FEF      		ldi r22,lo8(255)
+  54 0050 70E0      		ldi r23,hi8(255)
+  55 0052 CF01      		movw r24,r30
+  56 0054 0E94 0000 		call OSTaskCreate
+  57 0058 80E0      		ldi r24,lo8(s2+127)
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 2
+
+
+  58 005a 90E0      		ldi r25,hi8(s2+127)
+  59 005c E0E0      		ldi r30,lo8(gs(adc2))
+  60 005e F0E0      		ldi r31,hi8(gs(adc2))
+  61 0060 25E0      		ldi r18,lo8(5)
+  62 0062 AC01      		movw r20,r24
+  63 0064 6FEF      		ldi r22,lo8(255)
+  64 0066 70E0      		ldi r23,hi8(255)
+  65 0068 CF01      		movw r24,r30
+  66 006a 0E94 0000 		call OSTaskCreate
+  67 006e 80E0      		ldi r24,lo8(s3+127)
+  68 0070 90E0      		ldi r25,hi8(s3+127)
+  69 0072 E0E0      		ldi r30,lo8(gs(uart))
+  70 0074 F0E0      		ldi r31,hi8(gs(uart))
+  71 0076 26E0      		ldi r18,lo8(6)
+  72 0078 AC01      		movw r20,r24
+  73 007a 6FEF      		ldi r22,lo8(255)
+  74 007c 70E0      		ldi r23,hi8(255)
+  75 007e CF01      		movw r24,r30
+  76 0080 0E94 0000 		call OSTaskCreate
+  77 0084 80E0      		ldi r24,lo8(q)
+  78 0086 90E0      		ldi r25,hi8(q)
+  79 0088 6AE0      		ldi r22,lo8(10)
+  80 008a 70E0      		ldi r23,hi8(10)
+  81 008c 0E94 0000 		call OSQCreate
+  82 0090 9093 0000 		sts (maildata1)+1,r25
+  83 0094 8093 0000 		sts maildata1,r24
+  84 0098 0E94 0000 		call OSStart
+  85               	/* epilogue: frame size=0 */
+  86 009c DF91      		pop r29
+  87 009e CF91      		pop r28
+  88 00a0 0895      		ret
+  89               	/* epilogue end (size=3) */
+  90               	/* function main size 81 (74) */
+  91               		.size	main, .-main
+  92               		.data
+  93               	.LC0:
+  94 0000 7265 7375 		.string	"result1=%d   \r"
+  94      6C74 313D 
+  94      2564 2020 
+  94      200D 00
+  95               		.text
+  96               	.global	adc1
+  97               		.type	adc1, @function
+  98               	adc1:
+  99               	/* prologue: frame size=22 */
+ 100 00a2 CF93      		push r28
+ 101 00a4 DF93      		push r29
+ 102 00a6 CDB7      		in r28,__SP_L__
+ 103 00a8 DEB7      		in r29,__SP_H__
+ 104 00aa 6697      		sbiw r28,22
+ 105 00ac 0FB6      		in __tmp_reg__,__SREG__
+ 106 00ae F894      		cli
+ 107 00b0 DEBF      		out __SP_H__,r29
+ 108 00b2 0FBE      		out __SREG__,__tmp_reg__
+ 109 00b4 CDBF      		out __SP_L__,r28
+ 110               	/* prologue end (size=10) */
+ 111               	.L4:
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 3
+
+
+ 112 00b6 E7E2      		ldi r30,lo8(39)
+ 113 00b8 F0E0      		ldi r31,hi8(39)
+ 114 00ba 1082      		st Z,__zero_reg__
+ 115 00bc A6E2      		ldi r26,lo8(38)
+ 116 00be B0E0      		ldi r27,hi8(38)
+ 117 00c0 E6E2      		ldi r30,lo8(38)
+ 118 00c2 F0E0      		ldi r31,hi8(38)
+ 119 00c4 8081      		ld r24,Z
+ 120 00c6 8064      		ori r24,lo8(64)
+ 121 00c8 8C93      		st X,r24
+ 122               	.L5:
+ 123 00ca E6E2      		ldi r30,lo8(38)
+ 124 00cc F0E0      		ldi r31,hi8(38)
+ 125 00ce 8081      		ld r24,Z
+ 126 00d0 882F      		mov r24,r24
+ 127 00d2 90E0      		ldi r25,lo8(0)
+ 128 00d4 8071      		andi r24,lo8(16)
+ 129 00d6 9070      		andi r25,hi8(16)
+ 130 00d8 0097      		sbiw r24,0
+ 131 00da 01F0      		breq .L5
+ 132 00dc E4E2      		ldi r30,lo8(36)
+ 133 00de F0E0      		ldi r31,hi8(36)
+ 134 00e0 8081      		ld r24,Z
+ 135 00e2 282F      		mov r18,r24
+ 136 00e4 30E0      		ldi r19,lo8(0)
+ 137 00e6 E5E2      		ldi r30,lo8(37)
+ 138 00e8 F0E0      		ldi r31,hi8(37)
+ 139 00ea 8081      		ld r24,Z
+ 140 00ec 882F      		mov r24,r24
+ 141 00ee 90E0      		ldi r25,lo8(0)
+ 142 00f0 982F      		mov r25,r24
+ 143 00f2 8827      		clr r24
+ 144 00f4 822B      		or r24,r18
+ 145 00f6 932B      		or r25,r19
+ 146 00f8 9A83      		std Y+2,r25
+ 147 00fa 8983      		std Y+1,r24
+ 148 00fc 8981      		ldd r24,Y+1
+ 149 00fe 9A81      		ldd r25,Y+2
+ 150 0100 9F93      		push r25
+ 151 0102 8F93      		push r24
+ 152 0104 80E0      		ldi r24,lo8(.LC0)
+ 153 0106 90E0      		ldi r25,hi8(.LC0)
+ 154 0108 9F93      		push r25
+ 155 010a 8F93      		push r24
+ 156 010c CE01      		movw r24,r28
+ 157 010e 0396      		adiw r24,3
+ 158 0110 9F93      		push r25
+ 159 0112 8F93      		push r24
+ 160 0114 0E94 0000 		call sprintf
+ 161 0118 8DB7      		in r24,__SP_L__
+ 162 011a 9EB7      		in r25,__SP_H__
+ 163 011c 0696      		adiw r24,6
+ 164 011e 0FB6      		in __tmp_reg__,__SREG__
+ 165 0120 F894      		cli
+ 166 0122 9EBF      		out __SP_H__,r25
+ 167 0124 0FBE      		out __SREG__,__tmp_reg__
+ 168 0126 8DBF      		out __SP_L__,r24
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 4
+
+
+ 169 0128 2091 0000 		lds r18,maildata1
+ 170 012c 3091 0000 		lds r19,(maildata1)+1
+ 171 0130 CE01      		movw r24,r28
+ 172 0132 0396      		adiw r24,3
+ 173 0134 BC01      		movw r22,r24
+ 174 0136 C901      		movw r24,r18
+ 175 0138 0E94 0000 		call OSQPost
+ 176 013c 20E0      		ldi r18,lo8(0)
+ 177 013e 30E0      		ldi r19,hi8(0)
+ 178 0140 41E0      		ldi r20,lo8(1)
+ 179 0142 60E0      		ldi r22,lo8(0)
+ 180 0144 80E0      		ldi r24,lo8(0)
+ 181 0146 0E94 0000 		call OSTimeDlyHMSM
+ 182 014a 00C0      		rjmp .L4
+ 183               	/* epilogue: frame size=22 */
+ 184               	/* epilogue: noreturn */
+ 185               	/* epilogue end (size=0) */
+ 186               	/* function adc1 size 85 (75) */
+ 187               		.size	adc1, .-adc1
+ 188               		.data
+ 189               	.LC1:
+ 190 000f 7265 7375 		.string	"result2=%d    \r"
+ 190      6C74 323D 
+ 190      2564 2020 
+ 190      2020 0D00 
+ 191               		.text
+ 192               	.global	adc2
+ 193               		.type	adc2, @function
+ 194               	adc2:
+ 195               	/* prologue: frame size=22 */
+ 196 014c CF93      		push r28
+ 197 014e DF93      		push r29
+ 198 0150 CDB7      		in r28,__SP_L__
+ 199 0152 DEB7      		in r29,__SP_H__
+ 200 0154 6697      		sbiw r28,22
+ 201 0156 0FB6      		in __tmp_reg__,__SREG__
+ 202 0158 F894      		cli
+ 203 015a DEBF      		out __SP_H__,r29
+ 204 015c 0FBE      		out __SREG__,__tmp_reg__
+ 205 015e CDBF      		out __SP_L__,r28
+ 206               	/* prologue end (size=10) */
+ 207               	.L9:
+ 208 0160 E7E2      		ldi r30,lo8(39)
+ 209 0162 F0E0      		ldi r31,hi8(39)
+ 210 0164 81E0      		ldi r24,lo8(1)
+ 211 0166 8083      		st Z,r24
+ 212 0168 A6E2      		ldi r26,lo8(38)
+ 213 016a B0E0      		ldi r27,hi8(38)
+ 214 016c E6E2      		ldi r30,lo8(38)
+ 215 016e F0E0      		ldi r31,hi8(38)
+ 216 0170 8081      		ld r24,Z
+ 217 0172 8064      		ori r24,lo8(64)
+ 218 0174 8C93      		st X,r24
+ 219               	.L10:
+ 220 0176 E6E2      		ldi r30,lo8(38)
+ 221 0178 F0E0      		ldi r31,hi8(38)
+ 222 017a 8081      		ld r24,Z
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 5
+
+
+ 223 017c 882F      		mov r24,r24
+ 224 017e 90E0      		ldi r25,lo8(0)
+ 225 0180 8071      		andi r24,lo8(16)
+ 226 0182 9070      		andi r25,hi8(16)
+ 227 0184 0097      		sbiw r24,0
+ 228 0186 01F0      		breq .L10
+ 229 0188 E4E2      		ldi r30,lo8(36)
+ 230 018a F0E0      		ldi r31,hi8(36)
+ 231 018c 8081      		ld r24,Z
+ 232 018e 282F      		mov r18,r24
+ 233 0190 30E0      		ldi r19,lo8(0)
+ 234 0192 E5E2      		ldi r30,lo8(37)
+ 235 0194 F0E0      		ldi r31,hi8(37)
+ 236 0196 8081      		ld r24,Z
+ 237 0198 882F      		mov r24,r24
+ 238 019a 90E0      		ldi r25,lo8(0)
+ 239 019c 982F      		mov r25,r24
+ 240 019e 8827      		clr r24
+ 241 01a0 822B      		or r24,r18
+ 242 01a2 932B      		or r25,r19
+ 243 01a4 9A83      		std Y+2,r25
+ 244 01a6 8983      		std Y+1,r24
+ 245 01a8 8981      		ldd r24,Y+1
+ 246 01aa 9A81      		ldd r25,Y+2
+ 247 01ac 9F93      		push r25
+ 248 01ae 8F93      		push r24
+ 249 01b0 80E0      		ldi r24,lo8(.LC1)
+ 250 01b2 90E0      		ldi r25,hi8(.LC1)
+ 251 01b4 9F93      		push r25
+ 252 01b6 8F93      		push r24
+ 253 01b8 CE01      		movw r24,r28
+ 254 01ba 0396      		adiw r24,3
+ 255 01bc 9F93      		push r25
+ 256 01be 8F93      		push r24
+ 257 01c0 0E94 0000 		call sprintf
+ 258 01c4 8DB7      		in r24,__SP_L__
+ 259 01c6 9EB7      		in r25,__SP_H__
+ 260 01c8 0696      		adiw r24,6
+ 261 01ca 0FB6      		in __tmp_reg__,__SREG__
+ 262 01cc F894      		cli
+ 263 01ce 9EBF      		out __SP_H__,r25
+ 264 01d0 0FBE      		out __SREG__,__tmp_reg__
+ 265 01d2 8DBF      		out __SP_L__,r24
+ 266 01d4 2091 0000 		lds r18,maildata1
+ 267 01d8 3091 0000 		lds r19,(maildata1)+1
+ 268 01dc CE01      		movw r24,r28
+ 269 01de 0396      		adiw r24,3
+ 270 01e0 BC01      		movw r22,r24
+ 271 01e2 C901      		movw r24,r18
+ 272 01e4 0E94 0000 		call OSQPost
+ 273 01e8 20E0      		ldi r18,lo8(0)
+ 274 01ea 30E0      		ldi r19,hi8(0)
+ 275 01ec 41E0      		ldi r20,lo8(1)
+ 276 01ee 60E0      		ldi r22,lo8(0)
+ 277 01f0 80E0      		ldi r24,lo8(0)
+ 278 01f2 0E94 0000 		call OSTimeDlyHMSM
+ 279 01f6 00C0      		rjmp .L9
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 6
+
+
+ 280               	/* epilogue: frame size=22 */
+ 281               	/* epilogue: noreturn */
+ 282               	/* epilogue end (size=0) */
+ 283               	/* function adc2 size 86 (76) */
+ 284               		.size	adc2, .-adc2
+ 285               	.global	uart
+ 286               		.type	uart, @function
+ 287               	uart:
+ 288               	/* prologue: frame size=6 */
+ 289 01f8 CF93      		push r28
+ 290 01fa DF93      		push r29
+ 291 01fc CDB7      		in r28,__SP_L__
+ 292 01fe DEB7      		in r29,__SP_H__
+ 293 0200 2697      		sbiw r28,6
+ 294 0202 0FB6      		in __tmp_reg__,__SREG__
+ 295 0204 F894      		cli
+ 296 0206 DEBF      		out __SP_H__,r29
+ 297 0208 0FBE      		out __SREG__,__tmp_reg__
+ 298 020a CDBF      		out __SP_L__,r28
+ 299               	/* prologue end (size=10) */
+ 300               	.L14:
+ 301 020c 8091 0000 		lds r24,err
+ 302 0210 9091 0000 		lds r25,(err)+1
+ 303 0214 2091 0000 		lds r18,maildata1
+ 304 0218 3091 0000 		lds r19,(maildata1)+1
+ 305 021c AC01      		movw r20,r24
+ 306 021e 60E0      		ldi r22,lo8(0)
+ 307 0220 70E0      		ldi r23,hi8(0)
+ 308 0222 C901      		movw r24,r18
+ 309 0224 0E94 0000 		call OSQPend
+ 310 0228 9C83      		std Y+4,r25
+ 311 022a 8B83      		std Y+3,r24
+ 312 022c 8091 0000 		lds r24,err
+ 313 0230 9091 0000 		lds r25,(err)+1
+ 314 0234 2091 0000 		lds r18,maildata1
+ 315 0238 3091 0000 		lds r19,(maildata1)+1
+ 316 023c AC01      		movw r20,r24
+ 317 023e 60E0      		ldi r22,lo8(0)
+ 318 0240 70E0      		ldi r23,hi8(0)
+ 319 0242 C901      		movw r24,r18
+ 320 0244 0E94 0000 		call OSQPend
+ 321 0248 9A83      		std Y+2,r25
+ 322 024a 8983      		std Y+1,r24
+ 323 024c 1E82      		std Y+6,__zero_reg__
+ 324 024e 1D82      		std Y+5,__zero_reg__
+ 325 0250 00C0      		rjmp .L15
+ 326               	.L16:
+ 327 0252 ACE2      		ldi r26,lo8(44)
+ 328 0254 B0E0      		ldi r27,hi8(44)
+ 329 0256 8D81      		ldd r24,Y+5
+ 330 0258 9E81      		ldd r25,Y+6
+ 331 025a 9C01      		movw r18,r24
+ 332 025c 8B81      		ldd r24,Y+3
+ 333 025e 9C81      		ldd r25,Y+4
+ 334 0260 F901      		movw r30,r18
+ 335 0262 E80F      		add r30,r24
+ 336 0264 F91F      		adc r31,r25
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 7
+
+
+ 337 0266 8081      		ld r24,Z
+ 338 0268 8C93      		st X,r24
+ 339               	.L17:
+ 340 026a EBE2      		ldi r30,lo8(43)
+ 341 026c F0E0      		ldi r31,hi8(43)
+ 342 026e 8081      		ld r24,Z
+ 343 0270 882F      		mov r24,r24
+ 344 0272 90E0      		ldi r25,lo8(0)
+ 345 0274 8072      		andi r24,lo8(32)
+ 346 0276 9070      		andi r25,hi8(32)
+ 347 0278 0097      		sbiw r24,0
+ 348 027a 01F0      		breq .L17
+ 349 027c 8D81      		ldd r24,Y+5
+ 350 027e 9E81      		ldd r25,Y+6
+ 351 0280 0196      		adiw r24,1
+ 352 0282 9E83      		std Y+6,r25
+ 353 0284 8D83      		std Y+5,r24
+ 354               	.L15:
+ 355 0286 8D81      		ldd r24,Y+5
+ 356 0288 9E81      		ldd r25,Y+6
+ 357 028a 9C01      		movw r18,r24
+ 358 028c 8B81      		ldd r24,Y+3
+ 359 028e 9C81      		ldd r25,Y+4
+ 360 0290 F901      		movw r30,r18
+ 361 0292 E80F      		add r30,r24
+ 362 0294 F91F      		adc r31,r25
+ 363 0296 8081      		ld r24,Z
+ 364 0298 8823      		tst r24
+ 365 029a 01F4      		brne .L16
+ 366 029c 1E82      		std Y+6,__zero_reg__
+ 367 029e 1D82      		std Y+5,__zero_reg__
+ 368 02a0 00C0      		rjmp .L20
+ 369               	.L21:
+ 370 02a2 ACE2      		ldi r26,lo8(44)
+ 371 02a4 B0E0      		ldi r27,hi8(44)
+ 372 02a6 8D81      		ldd r24,Y+5
+ 373 02a8 9E81      		ldd r25,Y+6
+ 374 02aa 9C01      		movw r18,r24
+ 375 02ac 8981      		ldd r24,Y+1
+ 376 02ae 9A81      		ldd r25,Y+2
+ 377 02b0 F901      		movw r30,r18
+ 378 02b2 E80F      		add r30,r24
+ 379 02b4 F91F      		adc r31,r25
+ 380 02b6 8081      		ld r24,Z
+ 381 02b8 8C93      		st X,r24
+ 382               	.L22:
+ 383 02ba EBE2      		ldi r30,lo8(43)
+ 384 02bc F0E0      		ldi r31,hi8(43)
+ 385 02be 8081      		ld r24,Z
+ 386 02c0 882F      		mov r24,r24
+ 387 02c2 90E0      		ldi r25,lo8(0)
+ 388 02c4 8072      		andi r24,lo8(32)
+ 389 02c6 9070      		andi r25,hi8(32)
+ 390 02c8 0097      		sbiw r24,0
+ 391 02ca 01F0      		breq .L22
+ 392 02cc 8D81      		ldd r24,Y+5
+ 393 02ce 9E81      		ldd r25,Y+6
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 8
+
+
+ 394 02d0 0196      		adiw r24,1
+ 395 02d2 9E83      		std Y+6,r25
+ 396 02d4 8D83      		std Y+5,r24
+ 397               	.L20:
+ 398 02d6 8D81      		ldd r24,Y+5
+ 399 02d8 9E81      		ldd r25,Y+6
+ 400 02da 9C01      		movw r18,r24
+ 401 02dc 8981      		ldd r24,Y+1
+ 402 02de 9A81      		ldd r25,Y+2
+ 403 02e0 F901      		movw r30,r18
+ 404 02e2 E80F      		add r30,r24
+ 405 02e4 F91F      		adc r31,r25
+ 406 02e6 8081      		ld r24,Z
+ 407 02e8 8823      		tst r24
+ 408 02ea 01F4      		brne .L21
+ 409 02ec 20E0      		ldi r18,lo8(0)
+ 410 02ee 30E0      		ldi r19,hi8(0)
+ 411 02f0 41E0      		ldi r20,lo8(1)
+ 412 02f2 60E0      		ldi r22,lo8(0)
+ 413 02f4 80E0      		ldi r24,lo8(0)
+ 414 02f6 0E94 0000 		call OSTimeDlyHMSM
+ 415 02fa 00C0      		rjmp .L14
+ 416               	/* epilogue: frame size=6 */
+ 417               	/* epilogue: noreturn */
+ 418               	/* epilogue end (size=0) */
+ 419               	/* function uart size 130 (120) */
+ 420               		.size	uart, .-uart
+ 421               		.comm s1,128,1
+ 422               		.comm s2,128,1
+ 423               		.comm s3,128,1
+ 424               		.comm maildata1,2,1
+ 425               		.comm err,2,1
+ 426               		.comm q,20,1
+ 427               	/* File "queue.c": code  382 = 0x017e ( 345), prologues  34, epilogues   3 */
+GAS LISTING C:\users\student\Temp/ccJZX9GK.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 queue.c
+C:\users\student\Temp/ccJZX9GK.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/ccJZX9GK.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/ccJZX9GK.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/ccJZX9GK.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/ccJZX9GK.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/ccJZX9GK.s:12     .text:00000000 main
+                            *COM*:00000080 s1
+C:\users\student\Temp/ccJZX9GK.s:98     .text:000000a2 adc1
+                            *COM*:00000080 s2
+C:\users\student\Temp/ccJZX9GK.s:194    .text:0000014c adc2
+                            *COM*:00000080 s3
+C:\users\student\Temp/ccJZX9GK.s:287    .text:000001f8 uart
+                            *COM*:00000014 q
+                            *COM*:00000002 maildata1
+                            *COM*:00000002 err
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSQCreate
+OSStart
+sprintf
+OSQPost
+OSTimeDlyHMSM
+OSQPend

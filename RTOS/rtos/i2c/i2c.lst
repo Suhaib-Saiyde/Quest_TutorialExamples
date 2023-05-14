@@ -1,0 +1,762 @@
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 1
+
+
+   1               		.file	"i2c.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               	.global	a
+  10               		.data
+  11               		.type	a, @object
+  12               		.size	a, 20
+  13               	a:
+  14 0000 456E 7465 		.string	"Enter hour\r\n"
+  14      7220 686F 
+  14      7572 0D0A 
+  14      00
+  15 000d 0000 0000 		.skip 7,0
+  15      0000 00
+  16               	.global	b
+  17               		.type	b, @object
+  18               		.size	b, 20
+  19               	b:
+  20 0014 456E 7465 		.string	"Enter minute\r\n"
+  20      7220 6D69 
+  20      6E75 7465 
+  20      0D0A 00
+  21 0023 0000 0000 		.skip 5,0
+  21      00
+  22               	.global	c
+  23               		.type	c, @object
+  24               		.size	c, 20
+  25               	c:
+  26 0028 456E 7465 		.string	"Enter second\r\n"
+  26      7220 7365 
+  26      636F 6E64 
+  26      0D0A 00
+  27 0037 0000 0000 		.skip 5,0
+  27      00
+  28               		.text
+  29               	.global	tx
+  30               		.type	tx, @function
+  31               	tx:
+  32               	/* prologue: frame size=4 */
+  33 0000 CF93      		push r28
+  34 0002 DF93      		push r29
+  35 0004 CDB7      		in r28,__SP_L__
+  36 0006 DEB7      		in r29,__SP_H__
+  37 0008 2497      		sbiw r28,4
+  38 000a 0FB6      		in __tmp_reg__,__SREG__
+  39 000c F894      		cli
+  40 000e DEBF      		out __SP_H__,r29
+  41 0010 0FBE      		out __SREG__,__tmp_reg__
+  42 0012 CDBF      		out __SP_L__,r28
+  43               	/* prologue end (size=10) */
+  44 0014 9C83      		std Y+4,r25
+  45 0016 8B83      		std Y+3,r24
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 2
+
+
+  46 0018 1A82      		std Y+2,__zero_reg__
+  47 001a 1982      		std Y+1,__zero_reg__
+  48 001c 00C0      		rjmp .L2
+  49               	.L3:
+  50 001e ACE2      		ldi r26,lo8(44)
+  51 0020 B0E0      		ldi r27,hi8(44)
+  52 0022 8981      		ldd r24,Y+1
+  53 0024 9A81      		ldd r25,Y+2
+  54 0026 9C01      		movw r18,r24
+  55 0028 8B81      		ldd r24,Y+3
+  56 002a 9C81      		ldd r25,Y+4
+  57 002c F901      		movw r30,r18
+  58 002e E80F      		add r30,r24
+  59 0030 F91F      		adc r31,r25
+  60 0032 8081      		ld r24,Z
+  61 0034 8C93      		st X,r24
+  62               	.L4:
+  63 0036 EBE2      		ldi r30,lo8(43)
+  64 0038 F0E0      		ldi r31,hi8(43)
+  65 003a 8081      		ld r24,Z
+  66 003c 882F      		mov r24,r24
+  67 003e 90E0      		ldi r25,lo8(0)
+  68 0040 8072      		andi r24,lo8(32)
+  69 0042 9070      		andi r25,hi8(32)
+  70 0044 0097      		sbiw r24,0
+  71 0046 01F0      		breq .L4
+  72 0048 8981      		ldd r24,Y+1
+  73 004a 9A81      		ldd r25,Y+2
+  74 004c 0196      		adiw r24,1
+  75 004e 9A83      		std Y+2,r25
+  76 0050 8983      		std Y+1,r24
+  77               	.L2:
+  78 0052 8981      		ldd r24,Y+1
+  79 0054 9A81      		ldd r25,Y+2
+  80 0056 9C01      		movw r18,r24
+  81 0058 8B81      		ldd r24,Y+3
+  82 005a 9C81      		ldd r25,Y+4
+  83 005c F901      		movw r30,r18
+  84 005e E80F      		add r30,r24
+  85 0060 F91F      		adc r31,r25
+  86 0062 8081      		ld r24,Z
+  87 0064 8823      		tst r24
+  88 0066 01F4      		brne .L3
+  89               	/* epilogue: frame size=4 */
+  90 0068 2496      		adiw r28,4
+  91 006a 0FB6      		in __tmp_reg__,__SREG__
+  92 006c F894      		cli
+  93 006e DEBF      		out __SP_H__,r29
+  94 0070 0FBE      		out __SREG__,__tmp_reg__
+  95 0072 CDBF      		out __SP_L__,r28
+  96 0074 DF91      		pop r29
+  97 0076 CF91      		pop r28
+  98 0078 0895      		ret
+  99               	/* epilogue end (size=9) */
+ 100               	/* function tx size 61 (42) */
+ 101               		.size	tx, .-tx
+ 102               	.global	rx
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 3
+
+
+ 103               		.type	rx, @function
+ 104               	rx:
+ 105               	/* prologue: frame size=10 */
+ 106 007a CF93      		push r28
+ 107 007c DF93      		push r29
+ 108 007e CDB7      		in r28,__SP_L__
+ 109 0080 DEB7      		in r29,__SP_H__
+ 110 0082 2A97      		sbiw r28,10
+ 111 0084 0FB6      		in __tmp_reg__,__SREG__
+ 112 0086 F894      		cli
+ 113 0088 DEBF      		out __SP_H__,r29
+ 114 008a 0FBE      		out __SREG__,__tmp_reg__
+ 115 008c CDBF      		out __SP_L__,r28
+ 116               	/* prologue end (size=10) */
+ 117 008e 1A82      		std Y+2,__zero_reg__
+ 118 0090 1982      		std Y+1,__zero_reg__
+ 119               	.L10:
+ 120 0092 EBE2      		ldi r30,lo8(43)
+ 121 0094 F0E0      		ldi r31,hi8(43)
+ 122 0096 8081      		ld r24,Z
+ 123 0098 8823      		tst r24
+ 124 009a 04F4      		brge .L10
+ 125 009c 2981      		ldd r18,Y+1
+ 126 009e 3A81      		ldd r19,Y+2
+ 127 00a0 ECE2      		ldi r30,lo8(44)
+ 128 00a2 F0E0      		ldi r31,hi8(44)
+ 129 00a4 4081      		ld r20,Z
+ 130 00a6 CE01      		movw r24,r28
+ 131 00a8 0496      		adiw r24,4
+ 132 00aa FC01      		movw r30,r24
+ 133 00ac E20F      		add r30,r18
+ 134 00ae F31F      		adc r31,r19
+ 135 00b0 4083      		st Z,r20
+ 136 00b2 2981      		ldd r18,Y+1
+ 137 00b4 3A81      		ldd r19,Y+2
+ 138 00b6 CE01      		movw r24,r28
+ 139 00b8 0496      		adiw r24,4
+ 140 00ba FC01      		movw r30,r24
+ 141 00bc E20F      		add r30,r18
+ 142 00be F31F      		adc r31,r19
+ 143 00c0 8081      		ld r24,Z
+ 144 00c2 8D30      		cpi r24,lo8(13)
+ 145 00c4 01F4      		brne .L12
+ 146 00c6 2981      		ldd r18,Y+1
+ 147 00c8 3A81      		ldd r19,Y+2
+ 148 00ca CE01      		movw r24,r28
+ 149 00cc 0496      		adiw r24,4
+ 150 00ce FC01      		movw r30,r24
+ 151 00d0 E20F      		add r30,r18
+ 152 00d2 F31F      		adc r31,r19
+ 153 00d4 1082      		st Z,__zero_reg__
+ 154 00d6 8D81      		ldd r24,Y+5
+ 155 00d8 8053      		subi r24,lo8(-(-48))
+ 156 00da 282F      		mov r18,r24
+ 157 00dc 8C81      		ldd r24,Y+4
+ 158 00de 882F      		mov r24,r24
+ 159 00e0 90E0      		ldi r25,lo8(0)
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 4
+
+
+ 160 00e2 C097      		sbiw r24,48
+ 161 00e4 8295      		swap r24
+ 162 00e6 9295      		swap r25
+ 163 00e8 907F      		andi r25,0xf0
+ 164 00ea 9827      		eor r25,r24
+ 165 00ec 807F      		andi r24,0xf0
+ 166 00ee 9827      		eor r25,r24
+ 167 00f0 822B      		or r24,r18
+ 168 00f2 8B83      		std Y+3,r24
+ 169 00f4 8B81      		ldd r24,Y+3
+ 170 00f6 882F      		mov r24,r24
+ 171 00f8 90E0      		ldi r25,lo8(0)
+ 172 00fa 9A87      		std Y+10,r25
+ 173 00fc 8987      		std Y+9,r24
+ 174 00fe 00C0      		rjmp .L8
+ 175               	.L12:
+ 176 0100 8981      		ldd r24,Y+1
+ 177 0102 9A81      		ldd r25,Y+2
+ 178 0104 0196      		adiw r24,1
+ 179 0106 9A83      		std Y+2,r25
+ 180 0108 8983      		std Y+1,r24
+ 181 010a 00C0      		rjmp .L10
+ 182               	.L8:
+ 183 010c 8985      		ldd r24,Y+9
+ 184 010e 9A85      		ldd r25,Y+10
+ 185               	/* epilogue: frame size=10 */
+ 186 0110 2A96      		adiw r28,10
+ 187 0112 0FB6      		in __tmp_reg__,__SREG__
+ 188 0114 F894      		cli
+ 189 0116 DEBF      		out __SP_H__,r29
+ 190 0118 0FBE      		out __SREG__,__tmp_reg__
+ 191 011a CDBF      		out __SP_L__,r28
+ 192 011c DF91      		pop r29
+ 193 011e CF91      		pop r28
+ 194 0120 0895      		ret
+ 195               	/* epilogue end (size=9) */
+ 196               	/* function rx size 84 (65) */
+ 197               		.size	rx, .-rx
+ 198               	.global	START
+ 199               		.type	START, @function
+ 200               	START:
+ 201               	/* prologue: frame size=0 */
+ 202 0122 CF93      		push r28
+ 203 0124 DF93      		push r29
+ 204 0126 CDB7      		in r28,__SP_L__
+ 205 0128 DEB7      		in r29,__SP_H__
+ 206               	/* prologue end (size=4) */
+ 207 012a E4E7      		ldi r30,lo8(116)
+ 208 012c F0E0      		ldi r31,hi8(116)
+ 209 012e 84EA      		ldi r24,lo8(-92)
+ 210 0130 8083      		st Z,r24
+ 211               	.L16:
+ 212 0132 E4E7      		ldi r30,lo8(116)
+ 213 0134 F0E0      		ldi r31,hi8(116)
+ 214 0136 8081      		ld r24,Z
+ 215 0138 8823      		tst r24
+ 216 013a 04F4      		brge .L16
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 5
+
+
+ 217               	/* epilogue: frame size=0 */
+ 218 013c DF91      		pop r29
+ 219 013e CF91      		pop r28
+ 220 0140 0895      		ret
+ 221               	/* epilogue end (size=3) */
+ 222               	/* function START size 16 (9) */
+ 223               		.size	START, .-START
+ 224               	.global	STOP
+ 225               		.type	STOP, @function
+ 226               	STOP:
+ 227               	/* prologue: frame size=0 */
+ 228 0142 CF93      		push r28
+ 229 0144 DF93      		push r29
+ 230 0146 CDB7      		in r28,__SP_L__
+ 231 0148 DEB7      		in r29,__SP_H__
+ 232               	/* prologue end (size=4) */
+ 233 014a E4E7      		ldi r30,lo8(116)
+ 234 014c F0E0      		ldi r31,hi8(116)
+ 235 014e 84E9      		ldi r24,lo8(-108)
+ 236 0150 8083      		st Z,r24
+ 237               	/* epilogue: frame size=0 */
+ 238 0152 DF91      		pop r29
+ 239 0154 CF91      		pop r28
+ 240 0156 0895      		ret
+ 241               	/* epilogue end (size=3) */
+ 242               	/* function STOP size 11 (4) */
+ 243               		.size	STOP, .-STOP
+ 244               	.global	SEND
+ 245               		.type	SEND, @function
+ 246               	SEND:
+ 247               	/* prologue: frame size=1 */
+ 248 0158 CF93      		push r28
+ 249 015a DF93      		push r29
+ 250 015c CDB7      		in r28,__SP_L__
+ 251 015e DEB7      		in r29,__SP_H__
+ 252 0160 2197      		sbiw r28,1
+ 253 0162 0FB6      		in __tmp_reg__,__SREG__
+ 254 0164 F894      		cli
+ 255 0166 DEBF      		out __SP_H__,r29
+ 256 0168 0FBE      		out __SREG__,__tmp_reg__
+ 257 016a CDBF      		out __SP_L__,r28
+ 258               	/* prologue end (size=10) */
+ 259 016c 8983      		std Y+1,r24
+ 260 016e E3E7      		ldi r30,lo8(115)
+ 261 0170 F0E0      		ldi r31,hi8(115)
+ 262 0172 8981      		ldd r24,Y+1
+ 263 0174 8083      		st Z,r24
+ 264 0176 E4E7      		ldi r30,lo8(116)
+ 265 0178 F0E0      		ldi r31,hi8(116)
+ 266 017a 84E8      		ldi r24,lo8(-124)
+ 267 017c 8083      		st Z,r24
+ 268               	.L22:
+ 269 017e E4E7      		ldi r30,lo8(116)
+ 270 0180 F0E0      		ldi r31,hi8(116)
+ 271 0182 8081      		ld r24,Z
+ 272 0184 8823      		tst r24
+ 273 0186 04F4      		brge .L22
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 6
+
+
+ 274               	/* epilogue: frame size=1 */
+ 275 0188 2196      		adiw r28,1
+ 276 018a 0FB6      		in __tmp_reg__,__SREG__
+ 277 018c F894      		cli
+ 278 018e DEBF      		out __SP_H__,r29
+ 279 0190 0FBE      		out __SREG__,__tmp_reg__
+ 280 0192 CDBF      		out __SP_L__,r28
+ 281 0194 DF91      		pop r29
+ 282 0196 CF91      		pop r28
+ 283 0198 0895      		ret
+ 284               	/* epilogue end (size=9) */
+ 285               	/* function SEND size 33 (14) */
+ 286               		.size	SEND, .-SEND
+ 287               	.global	ACK
+ 288               		.type	ACK, @function
+ 289               	ACK:
+ 290               	/* prologue: frame size=0 */
+ 291 019a CF93      		push r28
+ 292 019c DF93      		push r29
+ 293 019e CDB7      		in r28,__SP_L__
+ 294 01a0 DEB7      		in r29,__SP_H__
+ 295               	/* prologue end (size=4) */
+ 296 01a2 E4E7      		ldi r30,lo8(116)
+ 297 01a4 F0E0      		ldi r31,hi8(116)
+ 298 01a6 84EC      		ldi r24,lo8(-60)
+ 299 01a8 8083      		st Z,r24
+ 300               	.L26:
+ 301 01aa E4E7      		ldi r30,lo8(116)
+ 302 01ac F0E0      		ldi r31,hi8(116)
+ 303 01ae 8081      		ld r24,Z
+ 304 01b0 8823      		tst r24
+ 305 01b2 04F4      		brge .L26
+ 306 01b4 E3E7      		ldi r30,lo8(115)
+ 307 01b6 F0E0      		ldi r31,hi8(115)
+ 308 01b8 8081      		ld r24,Z
+ 309 01ba 8093 0000 		sts temp,r24
+ 310               	/* epilogue: frame size=0 */
+ 311 01be DF91      		pop r29
+ 312 01c0 CF91      		pop r28
+ 313 01c2 0895      		ret
+ 314               	/* epilogue end (size=3) */
+ 315               	/* function ACK size 21 (14) */
+ 316               		.size	ACK, .-ACK
+ 317               	.global	NACK
+ 318               		.type	NACK, @function
+ 319               	NACK:
+ 320               	/* prologue: frame size=0 */
+ 321 01c4 CF93      		push r28
+ 322 01c6 DF93      		push r29
+ 323 01c8 CDB7      		in r28,__SP_L__
+ 324 01ca DEB7      		in r29,__SP_H__
+ 325               	/* prologue end (size=4) */
+ 326 01cc E4E7      		ldi r30,lo8(116)
+ 327 01ce F0E0      		ldi r31,hi8(116)
+ 328 01d0 84E8      		ldi r24,lo8(-124)
+ 329 01d2 8083      		st Z,r24
+ 330               	.L30:
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 7
+
+
+ 331 01d4 E4E7      		ldi r30,lo8(116)
+ 332 01d6 F0E0      		ldi r31,hi8(116)
+ 333 01d8 8081      		ld r24,Z
+ 334 01da 8823      		tst r24
+ 335 01dc 04F4      		brge .L30
+ 336 01de E3E7      		ldi r30,lo8(115)
+ 337 01e0 F0E0      		ldi r31,hi8(115)
+ 338 01e2 8081      		ld r24,Z
+ 339 01e4 8093 0000 		sts temp,r24
+ 340               	/* epilogue: frame size=0 */
+ 341 01e8 DF91      		pop r29
+ 342 01ea CF91      		pop r28
+ 343 01ec 0895      		ret
+ 344               	/* epilogue end (size=3) */
+ 345               	/* function NACK size 21 (14) */
+ 346               		.size	NACK, .-NACK
+ 347               	.global	uart
+ 348               		.type	uart, @function
+ 349               	uart:
+ 350               	/* prologue: frame size=2 */
+ 351 01ee CF93      		push r28
+ 352 01f0 DF93      		push r29
+ 353 01f2 CDB7      		in r28,__SP_L__
+ 354 01f4 DEB7      		in r29,__SP_H__
+ 355 01f6 2297      		sbiw r28,2
+ 356 01f8 0FB6      		in __tmp_reg__,__SREG__
+ 357 01fa F894      		cli
+ 358 01fc DEBF      		out __SP_H__,r29
+ 359 01fe 0FBE      		out __SREG__,__tmp_reg__
+ 360 0200 CDBF      		out __SP_L__,r28
+ 361               	/* prologue end (size=10) */
+ 362               	.L34:
+ 363 0202 1A82      		std Y+2,__zero_reg__
+ 364 0204 1982      		std Y+1,__zero_reg__
+ 365 0206 00C0      		rjmp .L35
+ 366               	.L36:
+ 367 0208 ACE2      		ldi r26,lo8(44)
+ 368 020a B0E0      		ldi r27,hi8(44)
+ 369 020c 8981      		ldd r24,Y+1
+ 370 020e 9A81      		ldd r25,Y+2
+ 371 0210 FC01      		movw r30,r24
+ 372 0212 E050      		subi r30,lo8(-(d))
+ 373 0214 F040      		sbci r31,hi8(-(d))
+ 374 0216 8081      		ld r24,Z
+ 375 0218 8C93      		st X,r24
+ 376               	.L37:
+ 377 021a EBE2      		ldi r30,lo8(43)
+ 378 021c F0E0      		ldi r31,hi8(43)
+ 379 021e 8081      		ld r24,Z
+ 380 0220 882F      		mov r24,r24
+ 381 0222 90E0      		ldi r25,lo8(0)
+ 382 0224 8072      		andi r24,lo8(32)
+ 383 0226 9070      		andi r25,hi8(32)
+ 384 0228 0097      		sbiw r24,0
+ 385 022a 01F0      		breq .L37
+ 386 022c 8981      		ldd r24,Y+1
+ 387 022e 9A81      		ldd r25,Y+2
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 8
+
+
+ 388 0230 0196      		adiw r24,1
+ 389 0232 9A83      		std Y+2,r25
+ 390 0234 8983      		std Y+1,r24
+ 391               	.L35:
+ 392 0236 8981      		ldd r24,Y+1
+ 393 0238 9A81      		ldd r25,Y+2
+ 394 023a FC01      		movw r30,r24
+ 395 023c E050      		subi r30,lo8(-(d))
+ 396 023e F040      		sbci r31,hi8(-(d))
+ 397 0240 8081      		ld r24,Z
+ 398 0242 8823      		tst r24
+ 399 0244 01F4      		brne .L36
+ 400 0246 24EF      		ldi r18,lo8(500)
+ 401 0248 31E0      		ldi r19,hi8(500)
+ 402 024a 40E0      		ldi r20,lo8(0)
+ 403 024c 60E0      		ldi r22,lo8(0)
+ 404 024e 80E0      		ldi r24,lo8(0)
+ 405 0250 0E94 0000 		call OSTimeDlyHMSM
+ 406 0254 87E0      		ldi r24,lo8(7)
+ 407 0256 0E94 0000 		call OSTaskResume
+ 408 025a 86E0      		ldi r24,lo8(6)
+ 409 025c 0E94 0000 		call OSTaskSuspend
+ 410 0260 00C0      		rjmp .L34
+ 411               	/* epilogue: frame size=2 */
+ 412               	/* epilogue: noreturn */
+ 413               	/* epilogue end (size=0) */
+ 414               	/* function uart size 58 (48) */
+ 415               		.size	uart, .-uart
+ 416               		.data
+ 417               	.LC0:
+ 418 003c 0808 0808 		.string	"\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
+ 418      0808 0808 
+ 418      0808 0808 
+ 418      0808 0808 
+ 418      0808 0808 
+ 419               		.text
+ 420               	.global	write
+ 421               		.type	write, @function
+ 422               	write:
+ 423               	/* prologue: frame size=3 */
+ 424 0262 CF93      		push r28
+ 425 0264 DF93      		push r29
+ 426 0266 CDB7      		in r28,__SP_L__
+ 427 0268 DEB7      		in r29,__SP_H__
+ 428 026a 2397      		sbiw r28,3
+ 429 026c 0FB6      		in __tmp_reg__,__SREG__
+ 430 026e F894      		cli
+ 431 0270 DEBF      		out __SP_H__,r29
+ 432 0272 0FBE      		out __SREG__,__tmp_reg__
+ 433 0274 CDBF      		out __SP_L__,r28
+ 434               	/* prologue end (size=10) */
+ 435               	.L42:
+ 436 0276 80E0      		ldi r24,lo8(a)
+ 437 0278 90E0      		ldi r25,hi8(a)
+ 438 027a 0E94 0000 		call tx
+ 439 027e 0E94 0000 		call rx
+ 440 0282 8983      		std Y+1,r24
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 9
+
+
+ 441 0284 80E0      		ldi r24,lo8(.LC0)
+ 442 0286 90E0      		ldi r25,hi8(.LC0)
+ 443 0288 0E94 0000 		call tx
+ 444 028c 80E0      		ldi r24,lo8(b)
+ 445 028e 90E0      		ldi r25,hi8(b)
+ 446 0290 0E94 0000 		call tx
+ 447 0294 0E94 0000 		call rx
+ 448 0298 8A83      		std Y+2,r24
+ 449 029a 80E0      		ldi r24,lo8(.LC0)
+ 450 029c 90E0      		ldi r25,hi8(.LC0)
+ 451 029e 0E94 0000 		call tx
+ 452 02a2 80E0      		ldi r24,lo8(c)
+ 453 02a4 90E0      		ldi r25,hi8(c)
+ 454 02a6 0E94 0000 		call tx
+ 455 02aa 0E94 0000 		call rx
+ 456 02ae 8B83      		std Y+3,r24
+ 457 02b0 80E0      		ldi r24,lo8(.LC0)
+ 458 02b2 90E0      		ldi r25,hi8(.LC0)
+ 459 02b4 0E94 0000 		call tx
+ 460 02b8 0E94 0000 		call START
+ 461 02bc 80ED      		ldi r24,lo8(-48)
+ 462 02be 0E94 0000 		call SEND
+ 463 02c2 80E0      		ldi r24,lo8(0)
+ 464 02c4 0E94 0000 		call SEND
+ 465 02c8 8B81      		ldd r24,Y+3
+ 466 02ca 0E94 0000 		call SEND
+ 467 02ce 8A81      		ldd r24,Y+2
+ 468 02d0 0E94 0000 		call SEND
+ 469 02d4 8981      		ldd r24,Y+1
+ 470 02d6 0E94 0000 		call SEND
+ 471 02da 0E94 0000 		call STOP
+ 472 02de 24EF      		ldi r18,lo8(500)
+ 473 02e0 31E0      		ldi r19,hi8(500)
+ 474 02e2 40E0      		ldi r20,lo8(0)
+ 475 02e4 60E0      		ldi r22,lo8(0)
+ 476 02e6 80E0      		ldi r24,lo8(0)
+ 477 02e8 0E94 0000 		call OSTimeDlyHMSM
+ 478 02ec 87E0      		ldi r24,lo8(7)
+ 479 02ee 0E94 0000 		call OSTaskResume
+ 480 02f2 85E0      		ldi r24,lo8(5)
+ 481 02f4 0E94 0000 		call OSTaskSuspend
+ 482 02f8 00C0      		rjmp .L42
+ 483               	/* epilogue: frame size=3 */
+ 484               	/* epilogue: noreturn */
+ 485               	/* epilogue end (size=0) */
+ 486               	/* function write size 76 (66) */
+ 487               		.size	write, .-write
+ 488               		.data
+ 489               	.LC1:
+ 490 0051 0808 0808 		.string	"\b\b\b\b\b\b\b\b\b\b\b\b"
+ 490      0808 0808 
+ 490      0808 0808 
+ 490      00
+ 491               	.LC2:
+ 492 005e 2578 3A25 		.string	"%x:%x:%x\r"
+ 492      783A 2578 
+ 492      0D00 
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 10
+
+
+ 493               		.text
+ 494               	.global	read
+ 495               		.type	read, @function
+ 496               	read:
+ 497               	/* prologue: frame size=0 */
+ 498 02fa CF93      		push r28
+ 499 02fc DF93      		push r29
+ 500 02fe CDB7      		in r28,__SP_L__
+ 501 0300 DEB7      		in r29,__SP_H__
+ 502               	/* prologue end (size=4) */
+ 503               	.L45:
+ 504 0302 24EF      		ldi r18,lo8(500)
+ 505 0304 31E0      		ldi r19,hi8(500)
+ 506 0306 40E0      		ldi r20,lo8(0)
+ 507 0308 60E0      		ldi r22,lo8(0)
+ 508 030a 80E0      		ldi r24,lo8(0)
+ 509 030c 0E94 0000 		call OSTimeDlyHMSM
+ 510 0310 80E0      		ldi r24,lo8(.LC1)
+ 511 0312 90E0      		ldi r25,hi8(.LC1)
+ 512 0314 0E94 0000 		call tx
+ 513 0318 0E94 0000 		call START
+ 514 031c 80ED      		ldi r24,lo8(-48)
+ 515 031e 0E94 0000 		call SEND
+ 516 0322 80E0      		ldi r24,lo8(0)
+ 517 0324 0E94 0000 		call SEND
+ 518 0328 0E94 0000 		call START
+ 519 032c 81ED      		ldi r24,lo8(-47)
+ 520 032e 0E94 0000 		call SEND
+ 521 0332 0E94 0000 		call ACK
+ 522 0336 8091 0000 		lds r24,temp
+ 523 033a 8093 0000 		sts sec,r24
+ 524 033e 0E94 0000 		call ACK
+ 525 0342 8091 0000 		lds r24,temp
+ 526 0346 8093 0000 		sts min,r24
+ 527 034a 0E94 0000 		call NACK
+ 528 034e 8091 0000 		lds r24,temp
+ 529 0352 8093 0000 		sts hr,r24
+ 530 0356 0E94 0000 		call STOP
+ 531 035a 8091 0000 		lds r24,sec
+ 532 035e 482F      		mov r20,r24
+ 533 0360 50E0      		ldi r21,lo8(0)
+ 534 0362 8091 0000 		lds r24,min
+ 535 0366 282F      		mov r18,r24
+ 536 0368 30E0      		ldi r19,lo8(0)
+ 537 036a 8091 0000 		lds r24,hr
+ 538 036e 882F      		mov r24,r24
+ 539 0370 90E0      		ldi r25,lo8(0)
+ 540 0372 5F93      		push r21
+ 541 0374 4F93      		push r20
+ 542 0376 3F93      		push r19
+ 543 0378 2F93      		push r18
+ 544 037a 9F93      		push r25
+ 545 037c 8F93      		push r24
+ 546 037e 80E0      		ldi r24,lo8(.LC2)
+ 547 0380 90E0      		ldi r25,hi8(.LC2)
+ 548 0382 9F93      		push r25
+ 549 0384 8F93      		push r24
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 11
+
+
+ 550 0386 80E0      		ldi r24,lo8(d)
+ 551 0388 90E0      		ldi r25,hi8(d)
+ 552 038a 9F93      		push r25
+ 553 038c 8F93      		push r24
+ 554 038e 0E94 0000 		call sprintf
+ 555 0392 8DB7      		in r24,__SP_L__
+ 556 0394 9EB7      		in r25,__SP_H__
+ 557 0396 0A96      		adiw r24,10
+ 558 0398 0FB6      		in __tmp_reg__,__SREG__
+ 559 039a F894      		cli
+ 560 039c 9EBF      		out __SP_H__,r25
+ 561 039e 0FBE      		out __SREG__,__tmp_reg__
+ 562 03a0 8DBF      		out __SP_L__,r24
+ 563 03a2 24EF      		ldi r18,lo8(500)
+ 564 03a4 31E0      		ldi r19,hi8(500)
+ 565 03a6 40E0      		ldi r20,lo8(0)
+ 566 03a8 60E0      		ldi r22,lo8(0)
+ 567 03aa 80E0      		ldi r24,lo8(0)
+ 568 03ac 0E94 0000 		call OSTimeDlyHMSM
+ 569 03b0 86E0      		ldi r24,lo8(6)
+ 570 03b2 0E94 0000 		call OSTaskResume
+ 571 03b6 87E0      		ldi r24,lo8(7)
+ 572 03b8 0E94 0000 		call OSTaskSuspend
+ 573 03bc 00C0      		rjmp .L45
+ 574               	/* epilogue: frame size=0 */
+ 575               	/* epilogue: noreturn */
+ 576               	/* epilogue end (size=0) */
+ 577               	/* function read size 98 (94) */
+ 578               		.size	read, .-read
+ 579               	.global	main
+ 580               		.type	main, @function
+ 581               	main:
+ 582               	/* prologue: frame size=0 */
+ 583 03be CF93      		push r28
+ 584 03c0 DF93      		push r29
+ 585 03c2 CDB7      		in r28,__SP_L__
+ 586 03c4 DEB7      		in r29,__SP_H__
+ 587               	/* prologue end (size=4) */
+ 588 03c6 EBE2      		ldi r30,lo8(43)
+ 589 03c8 F0E0      		ldi r31,hi8(43)
+ 590 03ca 1082      		st Z,__zero_reg__
+ 591 03cc EAE2      		ldi r30,lo8(42)
+ 592 03ce F0E0      		ldi r31,hi8(42)
+ 593 03d0 88E1      		ldi r24,lo8(24)
+ 594 03d2 8083      		st Z,r24
+ 595 03d4 E5E9      		ldi r30,lo8(149)
+ 596 03d6 F0E0      		ldi r31,hi8(149)
+ 597 03d8 86E0      		ldi r24,lo8(6)
+ 598 03da 8083      		st Z,r24
+ 599 03dc E9E2      		ldi r30,lo8(41)
+ 600 03de F0E0      		ldi r31,hi8(41)
+ 601 03e0 87E6      		ldi r24,lo8(103)
+ 602 03e2 8083      		st Z,r24
+ 603 03e4 E3E5      		ldi r30,lo8(83)
+ 604 03e6 F0E0      		ldi r31,hi8(83)
+ 605 03e8 87E0      		ldi r24,lo8(7)
+ 606 03ea 8083      		st Z,r24
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 12
+
+
+ 607 03ec E7E5      		ldi r30,lo8(87)
+ 608 03ee F0E0      		ldi r31,hi8(87)
+ 609 03f0 81E0      		ldi r24,lo8(1)
+ 610 03f2 8083      		st Z,r24
+ 611 03f4 E0E7      		ldi r30,lo8(112)
+ 612 03f6 F0E0      		ldi r31,hi8(112)
+ 613 03f8 82E1      		ldi r24,lo8(18)
+ 614 03fa 8083      		st Z,r24
+ 615 03fc 0E94 0000 		call OSInit
+ 616 0400 80E0      		ldi r24,lo8(s1+127)
+ 617 0402 90E0      		ldi r25,hi8(s1+127)
+ 618 0404 E0E0      		ldi r30,lo8(gs(write))
+ 619 0406 F0E0      		ldi r31,hi8(gs(write))
+ 620 0408 25E0      		ldi r18,lo8(5)
+ 621 040a AC01      		movw r20,r24
+ 622 040c 6FEF      		ldi r22,lo8(255)
+ 623 040e 70E0      		ldi r23,hi8(255)
+ 624 0410 CF01      		movw r24,r30
+ 625 0412 0E94 0000 		call OSTaskCreate
+ 626 0416 80E0      		ldi r24,lo8(s2+127)
+ 627 0418 90E0      		ldi r25,hi8(s2+127)
+ 628 041a E0E0      		ldi r30,lo8(gs(uart))
+ 629 041c F0E0      		ldi r31,hi8(gs(uart))
+ 630 041e 26E0      		ldi r18,lo8(6)
+ 631 0420 AC01      		movw r20,r24
+ 632 0422 6FEF      		ldi r22,lo8(255)
+ 633 0424 70E0      		ldi r23,hi8(255)
+ 634 0426 CF01      		movw r24,r30
+ 635 0428 0E94 0000 		call OSTaskCreate
+ 636 042c 80E0      		ldi r24,lo8(s3+127)
+ 637 042e 90E0      		ldi r25,hi8(s3+127)
+ 638 0430 E0E0      		ldi r30,lo8(gs(read))
+ 639 0432 F0E0      		ldi r31,hi8(gs(read))
+ 640 0434 27E0      		ldi r18,lo8(7)
+ 641 0436 AC01      		movw r20,r24
+ 642 0438 6FEF      		ldi r22,lo8(255)
+ 643 043a 70E0      		ldi r23,hi8(255)
+ 644 043c CF01      		movw r24,r30
+ 645 043e 0E94 0000 		call OSTaskCreate
+ 646 0442 0E94 0000 		call OSStart
+ 647               	/* epilogue: frame size=0 */
+ 648 0446 DF91      		pop r29
+ 649 0448 CF91      		pop r28
+ 650 044a 0895      		ret
+ 651               	/* epilogue end (size=3) */
+ 652               	/* function main size 71 (64) */
+ 653               		.size	main, .-main
+ 654               		.comm s1,128,1
+ 655               		.comm s2,128,1
+ 656               		.comm s3,128,1
+ 657               		.comm d,10,1
+ 658               		.comm hr,1,1
+ 659               		.comm sec,1,1
+ 660               		.comm min,1,1
+ 661               		.comm temp,1,1
+ 662               	/* File "i2c.c": code  550 = 0x0226 ( 434), prologues  74, epilogues  42 */
+GAS LISTING C:\users\student\Temp/cch9bNJL.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+C:\users\student\Temp/cch9bNJL.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/cch9bNJL.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/cch9bNJL.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/cch9bNJL.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/cch9bNJL.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/cch9bNJL.s:13     .data:00000000 a
+C:\users\student\Temp/cch9bNJL.s:19     .data:00000014 b
+C:\users\student\Temp/cch9bNJL.s:25     .data:00000028 c
+C:\users\student\Temp/cch9bNJL.s:31     .text:00000000 tx
+C:\users\student\Temp/cch9bNJL.s:104    .text:0000007a rx
+C:\users\student\Temp/cch9bNJL.s:200    .text:00000122 START
+C:\users\student\Temp/cch9bNJL.s:226    .text:00000142 STOP
+C:\users\student\Temp/cch9bNJL.s:246    .text:00000158 SEND
+C:\users\student\Temp/cch9bNJL.s:289    .text:0000019a ACK
+                            *COM*:00000001 temp
+C:\users\student\Temp/cch9bNJL.s:319    .text:000001c4 NACK
+C:\users\student\Temp/cch9bNJL.s:349    .text:000001ee uart
+                            *COM*:0000000a d
+C:\users\student\Temp/cch9bNJL.s:422    .text:00000262 write
+C:\users\student\Temp/cch9bNJL.s:496    .text:000002fa read
+                            *COM*:00000001 sec
+                            *COM*:00000001 min
+                            *COM*:00000001 hr
+C:\users\student\Temp/cch9bNJL.s:581    .text:000003be main
+                            *COM*:00000080 s1
+                            *COM*:00000080 s2
+                            *COM*:00000080 s3
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSTimeDlyHMSM
+OSTaskResume
+OSTaskSuspend
+sprintf
+OSInit
+OSTaskCreate
+OSStart

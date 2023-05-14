@@ -1,0 +1,1 @@
+decoder.o: decoder.c

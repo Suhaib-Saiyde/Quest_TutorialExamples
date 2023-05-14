@@ -1,0 +1,4 @@
+--cpu Cortex-M3 "startup_lpc17xx.o" "bling3.o" --strict --scatter "bling3.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\bling3.map" -o "bling3.axf"

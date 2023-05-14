@@ -1,0 +1,4 @@
+Dependencies for Project 'bling2', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x4CCA6EB2)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Keil\ARM\INC" -I "C:\Keil\ARM\INC\Philips" --list "Startup.lst" --xref -o "Startup.o" --depend "Startup.d")
+F (.\bling2.c)(0x6007E021)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\Keil\ARM\INC" -I "C:\Keil\ARM\INC\Philips" -o "bling2.o" --omf_browse "bling2.crf" --depend "bling2.d")
+I (C:\Keil\ARM\INC\Philips\LPC214X.H)(0x4CCA6FCC)

@@ -1,0 +1,20 @@
+*** Creating Trace Output File 'iot.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"iot.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "iot.o" --strict --scatter "iot.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\iot.map" -o "iot.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'iot.axf'
+### ADS-LD Command File: 'iot.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'iot.lnp', Handle=0x00000208
+### Writing '.lnp' file
+### ADS-LD Command file 'iot.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

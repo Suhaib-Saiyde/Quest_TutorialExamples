@@ -1,0 +1,20 @@
+*** Creating Trace Output File 'STOP.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup_lpc17xx.o"'
+### List of Objects: adding '"stop.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "startup_lpc17xx.o" "stop.o" --strict --scatter "STOP.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\STOP.map" -o "STOP.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'STOP.axf'
+### ADS-LD Command File: 'STOP.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'STOP.lnp', Handle=0x000001D8
+### Writing '.lnp' file
+### ADS-LD Command file 'STOP.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

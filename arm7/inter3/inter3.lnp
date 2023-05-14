@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "inter3.o" --strict --scatter "inter3.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\inter3.map" -o "inter3.axf"

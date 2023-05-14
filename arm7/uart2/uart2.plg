@@ -1,0 +1,67 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\users\student\Desktop\suhaib\arm7\uart2\uart2.uvproj
+Project File Date:  02/26/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling uart2.c...
+uart2.c(12): error:  #20: identifier "i" is undefined
+uart2.c(29): error:  #20: identifier "j" is undefined
+uart2.c(31): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+assembling Startup.s...
+compiling uart2.c...
+uart2.c(12): error:  #20: identifier "i" is undefined
+uart2.c(29): error:  #20: identifier "j" is undefined
+uart2.c(31): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+compiling uart2.c...
+uart2.c(13): error:  #20: identifier "i" is undefined
+uart2.c(30): error:  #20: identifier "j" is undefined
+uart2.c(32): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+assembling Startup.s...
+compiling uart2.c...
+uart2.c(13): error:  #20: identifier "i" is undefined
+uart2.c(30): error:  #20: identifier "j" is undefined
+uart2.c(32): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+assembling Startup.s...
+compiling uart2.c...
+uart2.c(13): error:  #20: identifier "i" is undefined
+uart2.c(30): error:  #20: identifier "j" is undefined
+uart2.c(32): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+compiling uart2.c...
+uart2.c(17): warning:  #187-D: use of "=" where "==" may have been intended
+uart2.c(32): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=952 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"uart2.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling uart2.c...
+uart2.c(17): warning:  #187-D: use of "=" where "==" may have been intended
+uart2.c(32): warning:  #1-D: last line of file ends without a newline
+uart2.c(5): warning:  #177-D: variable "j" was declared but never referenced
+linking...
+Program Size: Code=924 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"uart2.axf" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling uart2.c...
+uart2.c(32): warning:  #1-D: last line of file ends without a newline
+uart2.c(5): warning:  #177-D: variable "j" was declared but never referenced
+linking...
+Program Size: Code=920 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"uart2.axf" - 0 Error(s), 2 Warning(s).

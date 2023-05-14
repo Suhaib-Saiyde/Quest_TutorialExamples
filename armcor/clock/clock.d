@@ -1,0 +1,10 @@
+clock.o: clock.c
+clock.o: C:\Keil\ARM\INC\NXP\LPC17xx\LPC17xx.H
+clock.o: C:\Keil\ARM\RV31\INC\core_cm3.h
+clock.o: C:\Keil\ARM\RV31\INC\stdint.h
+clock.o: C:\Keil\ARM\RV31\INC\core_cmInstr.h
+clock.o: C:\Keil\ARM\RV31\INC\core_cmFunc.h
+clock.o: C:\Keil\ARM\INC\NXP\LPC17xx\system_LPC17xx.h
+clock.o: C:\Keil\ARM\RV31\INC\stdio.h
+clock.o: C:\Keil\ARM\RV31\INC\stdlib.h
+clock.o: C:\Keil\ARM\RV31\INC\string.h

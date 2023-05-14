@@ -1,0 +1,293 @@
+GAS LISTING C:\users\student\Temp/ccn462IW.s 			page 1
+
+
+   1               		.file	"semaphore.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               	.global	a
+  10               		.data
+  11               		.type	a, @object
+  12               		.size	a, 45
+  13               	a:
+  14 0000 6865 6C6C 		.string	"hello aow are you alphabets a b c d e f g h\r"
+  14      6F20 616F 
+  14      7720 6172 
+  14      6520 796F 
+  14      7520 616C 
+  15               	.global	b
+  16               		.type	b, @object
+  17               		.size	b, 26
+  18               	b:
+  19 002d 6161 6161 		.string	"aaaaaaaaaaaaaaaaaaaaaaaa\r"
+  19      6161 6161 
+  19      6161 6161 
+  19      6161 6161 
+  19      6161 6161 
+  20               		.text
+  21               	.global	main
+  22               		.type	main, @function
+  23               	main:
+  24               	/* prologue: frame size=0 */
+  25 0000 CF93      		push r28
+  26 0002 DF93      		push r29
+  27 0004 CDB7      		in r28,__SP_L__
+  28 0006 DEB7      		in r29,__SP_H__
+  29               	/* prologue end (size=4) */
+  30 0008 EBE2      		ldi r30,lo8(43)
+  31 000a F0E0      		ldi r31,hi8(43)
+  32 000c 1082      		st Z,__zero_reg__
+  33 000e EAE2      		ldi r30,lo8(42)
+  34 0010 F0E0      		ldi r31,hi8(42)
+  35 0012 88E1      		ldi r24,lo8(24)
+  36 0014 8083      		st Z,r24
+  37 0016 E5E9      		ldi r30,lo8(149)
+  38 0018 F0E0      		ldi r31,hi8(149)
+  39 001a 86E0      		ldi r24,lo8(6)
+  40 001c 8083      		st Z,r24
+  41 001e E9E2      		ldi r30,lo8(41)
+  42 0020 F0E0      		ldi r31,hi8(41)
+  43 0022 87E6      		ldi r24,lo8(103)
+  44 0024 8083      		st Z,r24
+  45 0026 E3E5      		ldi r30,lo8(83)
+  46 0028 F0E0      		ldi r31,hi8(83)
+  47 002a 87E0      		ldi r24,lo8(7)
+  48 002c 8083      		st Z,r24
+  49 002e E7E5      		ldi r30,lo8(87)
+GAS LISTING C:\users\student\Temp/ccn462IW.s 			page 2
+
+
+  50 0030 F0E0      		ldi r31,hi8(87)
+  51 0032 81E0      		ldi r24,lo8(1)
+  52 0034 8083      		st Z,r24
+  53 0036 0E94 0000 		call OSInit
+  54 003a 80E0      		ldi r24,lo8(s1+127)
+  55 003c 90E0      		ldi r25,hi8(s1+127)
+  56 003e 60E0      		ldi r22,lo8(a)
+  57 0040 70E0      		ldi r23,hi8(a)
+  58 0042 E0E0      		ldi r30,lo8(gs(uart1))
+  59 0044 F0E0      		ldi r31,hi8(gs(uart1))
+  60 0046 24E0      		ldi r18,lo8(4)
+  61 0048 AC01      		movw r20,r24
+  62 004a CF01      		movw r24,r30
+  63 004c 0E94 0000 		call OSTaskCreate
+  64 0050 80E0      		ldi r24,lo8(s2+127)
+  65 0052 90E0      		ldi r25,hi8(s2+127)
+  66 0054 60E0      		ldi r22,lo8(b)
+  67 0056 70E0      		ldi r23,hi8(b)
+  68 0058 E0E0      		ldi r30,lo8(gs(uart2))
+  69 005a F0E0      		ldi r31,hi8(gs(uart2))
+  70 005c 25E0      		ldi r18,lo8(5)
+  71 005e AC01      		movw r20,r24
+  72 0060 CF01      		movw r24,r30
+  73 0062 0E94 0000 		call OSTaskCreate
+  74 0066 80E0      		ldi r24,lo8(0)
+  75 0068 90E0      		ldi r25,hi8(0)
+  76 006a 0E94 0000 		call OSSemCreate
+  77 006e 9093 0000 		sts (maildata1)+1,r25
+  78 0072 8093 0000 		sts maildata1,r24
+  79 0076 0E94 0000 		call OSStart
+  80               	/* epilogue: frame size=0 */
+  81 007a DF91      		pop r29
+  82 007c CF91      		pop r28
+  83 007e 0895      		ret
+  84               	/* epilogue end (size=3) */
+  85               	/* function main size 64 (57) */
+  86               		.size	main, .-main
+  87               	.global	uart1
+  88               		.type	uart1, @function
+  89               	uart1:
+  90               	/* prologue: frame size=4 */
+  91 0080 CF93      		push r28
+  92 0082 DF93      		push r29
+  93 0084 CDB7      		in r28,__SP_L__
+  94 0086 DEB7      		in r29,__SP_H__
+  95 0088 2497      		sbiw r28,4
+  96 008a 0FB6      		in __tmp_reg__,__SREG__
+  97 008c F894      		cli
+  98 008e DEBF      		out __SP_H__,r29
+  99 0090 0FBE      		out __SREG__,__tmp_reg__
+ 100 0092 CDBF      		out __SP_L__,r28
+ 101               	/* prologue end (size=10) */
+ 102 0094 9C83      		std Y+4,r25
+ 103 0096 8B83      		std Y+3,r24
+ 104               	.L4:
+ 105 0098 8091 0000 		lds r24,err
+ 106 009c 9091 0000 		lds r25,(err)+1
+GAS LISTING C:\users\student\Temp/ccn462IW.s 			page 3
+
+
+ 107 00a0 2091 0000 		lds r18,maildata1
+ 108 00a4 3091 0000 		lds r19,(maildata1)+1
+ 109 00a8 AC01      		movw r20,r24
+ 110 00aa 60E0      		ldi r22,lo8(0)
+ 111 00ac 70E0      		ldi r23,hi8(0)
+ 112 00ae C901      		movw r24,r18
+ 113 00b0 0E94 0000 		call OSSemPend
+ 114 00b4 1A82      		std Y+2,__zero_reg__
+ 115 00b6 1982      		std Y+1,__zero_reg__
+ 116 00b8 00C0      		rjmp .L5
+ 117               	.L6:
+ 118 00ba ACE2      		ldi r26,lo8(44)
+ 119 00bc B0E0      		ldi r27,hi8(44)
+ 120 00be 8981      		ldd r24,Y+1
+ 121 00c0 9A81      		ldd r25,Y+2
+ 122 00c2 9C01      		movw r18,r24
+ 123 00c4 8B81      		ldd r24,Y+3
+ 124 00c6 9C81      		ldd r25,Y+4
+ 125 00c8 F901      		movw r30,r18
+ 126 00ca E80F      		add r30,r24
+ 127 00cc F91F      		adc r31,r25
+ 128 00ce 8081      		ld r24,Z
+ 129 00d0 8C93      		st X,r24
+ 130               	.L7:
+ 131 00d2 EBE2      		ldi r30,lo8(43)
+ 132 00d4 F0E0      		ldi r31,hi8(43)
+ 133 00d6 8081      		ld r24,Z
+ 134 00d8 882F      		mov r24,r24
+ 135 00da 90E0      		ldi r25,lo8(0)
+ 136 00dc 8072      		andi r24,lo8(32)
+ 137 00de 9070      		andi r25,hi8(32)
+ 138 00e0 0097      		sbiw r24,0
+ 139 00e2 01F0      		breq .L7
+ 140 00e4 8981      		ldd r24,Y+1
+ 141 00e6 9A81      		ldd r25,Y+2
+ 142 00e8 0196      		adiw r24,1
+ 143 00ea 9A83      		std Y+2,r25
+ 144 00ec 8983      		std Y+1,r24
+ 145               	.L5:
+ 146 00ee 8981      		ldd r24,Y+1
+ 147 00f0 9A81      		ldd r25,Y+2
+ 148 00f2 9C01      		movw r18,r24
+ 149 00f4 8B81      		ldd r24,Y+3
+ 150 00f6 9C81      		ldd r25,Y+4
+ 151 00f8 F901      		movw r30,r18
+ 152 00fa E80F      		add r30,r24
+ 153 00fc F91F      		adc r31,r25
+ 154 00fe 8081      		ld r24,Z
+ 155 0100 8823      		tst r24
+ 156 0102 01F4      		brne .L6
+ 157 0104 81E0      		ldi r24,lo8(1)
+ 158 0106 90E0      		ldi r25,hi8(1)
+ 159 0108 0E94 0000 		call OSTimeDly
+ 160 010c 00C0      		rjmp .L4
+ 161               	/* epilogue: frame size=4 */
+ 162               	/* epilogue: noreturn */
+ 163               	/* epilogue end (size=0) */
+GAS LISTING C:\users\student\Temp/ccn462IW.s 			page 4
+
+
+ 164               	/* function uart1 size 71 (61) */
+ 165               		.size	uart1, .-uart1
+ 166               	.global	uart2
+ 167               		.type	uart2, @function
+ 168               	uart2:
+ 169               	/* prologue: frame size=4 */
+ 170 010e CF93      		push r28
+ 171 0110 DF93      		push r29
+ 172 0112 CDB7      		in r28,__SP_L__
+ 173 0114 DEB7      		in r29,__SP_H__
+ 174 0116 2497      		sbiw r28,4
+ 175 0118 0FB6      		in __tmp_reg__,__SREG__
+ 176 011a F894      		cli
+ 177 011c DEBF      		out __SP_H__,r29
+ 178 011e 0FBE      		out __SREG__,__tmp_reg__
+ 179 0120 CDBF      		out __SP_L__,r28
+ 180               	/* prologue end (size=10) */
+ 181 0122 9C83      		std Y+4,r25
+ 182 0124 8B83      		std Y+3,r24
+ 183               	.L12:
+ 184 0126 1A82      		std Y+2,__zero_reg__
+ 185 0128 1982      		std Y+1,__zero_reg__
+ 186 012a 00C0      		rjmp .L13
+ 187               	.L14:
+ 188 012c ACE2      		ldi r26,lo8(44)
+ 189 012e B0E0      		ldi r27,hi8(44)
+ 190 0130 8981      		ldd r24,Y+1
+ 191 0132 9A81      		ldd r25,Y+2
+ 192 0134 9C01      		movw r18,r24
+ 193 0136 8B81      		ldd r24,Y+3
+ 194 0138 9C81      		ldd r25,Y+4
+ 195 013a F901      		movw r30,r18
+ 196 013c E80F      		add r30,r24
+ 197 013e F91F      		adc r31,r25
+ 198 0140 8081      		ld r24,Z
+ 199 0142 8C93      		st X,r24
+ 200               	.L15:
+ 201 0144 EBE2      		ldi r30,lo8(43)
+ 202 0146 F0E0      		ldi r31,hi8(43)
+ 203 0148 8081      		ld r24,Z
+ 204 014a 882F      		mov r24,r24
+ 205 014c 90E0      		ldi r25,lo8(0)
+ 206 014e 8072      		andi r24,lo8(32)
+ 207 0150 9070      		andi r25,hi8(32)
+ 208 0152 0097      		sbiw r24,0
+ 209 0154 01F0      		breq .L15
+ 210 0156 8981      		ldd r24,Y+1
+ 211 0158 9A81      		ldd r25,Y+2
+ 212 015a 0196      		adiw r24,1
+ 213 015c 9A83      		std Y+2,r25
+ 214 015e 8983      		std Y+1,r24
+ 215               	.L13:
+ 216 0160 8981      		ldd r24,Y+1
+ 217 0162 9A81      		ldd r25,Y+2
+ 218 0164 9C01      		movw r18,r24
+ 219 0166 8B81      		ldd r24,Y+3
+ 220 0168 9C81      		ldd r25,Y+4
+GAS LISTING C:\users\student\Temp/ccn462IW.s 			page 5
+
+
+ 221 016a F901      		movw r30,r18
+ 222 016c E80F      		add r30,r24
+ 223 016e F91F      		adc r31,r25
+ 224 0170 8081      		ld r24,Z
+ 225 0172 8823      		tst r24
+ 226 0174 01F4      		brne .L14
+ 227 0176 8091 0000 		lds r24,maildata1
+ 228 017a 9091 0000 		lds r25,(maildata1)+1
+ 229 017e 0E94 0000 		call OSSemPost
+ 230 0182 00C0      		rjmp .L12
+ 231               	/* epilogue: frame size=4 */
+ 232               	/* epilogue: noreturn */
+ 233               	/* epilogue end (size=0) */
+ 234               	/* function uart2 size 59 (49) */
+ 235               		.size	uart2, .-uart2
+ 236               		.comm s1,128,1
+ 237               		.comm s2,128,1
+ 238               		.comm maildata1,2,1
+ 239               		.comm err,2,1
+ 240               	/* File "semaphore.c": code  194 = 0x00c2 ( 167), prologues  24, epilogues   3 */
+GAS LISTING C:\users\student\Temp/ccn462IW.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 semaphore.c
+C:\users\student\Temp/ccn462IW.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/ccn462IW.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/ccn462IW.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/ccn462IW.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/ccn462IW.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/ccn462IW.s:13     .data:00000000 a
+C:\users\student\Temp/ccn462IW.s:18     .data:0000002d b
+C:\users\student\Temp/ccn462IW.s:23     .text:00000000 main
+                            *COM*:00000080 s1
+C:\users\student\Temp/ccn462IW.s:89     .text:00000080 uart1
+                            *COM*:00000080 s2
+C:\users\student\Temp/ccn462IW.s:168    .text:0000010e uart2
+                            *COM*:00000002 maildata1
+                            *COM*:00000002 err
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+OSInit
+OSTaskCreate
+OSSemCreate
+OSStart
+OSSemPend
+OSTimeDly
+OSSemPost

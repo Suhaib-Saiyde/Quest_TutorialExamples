@@ -1,0 +1,65 @@
+   1               		.file	"encoder.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	main
+  19               	main:
+  20               	.LFB6:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LM2:
+  25 0000 8FEF      		ldi r24,lo8(-1)
+  26 0002 82B9      		out 34-0x20,r24
+  27               	.LM3:
+  28 0004 17BA      		out 55-0x20,__zero_reg__
+  29               	.LM4:
+  30 0006 83B9      		out 35-0x20,r24
+  31               	.LVL0:
+  32               	.L2:
+  33               	.LM5:
+  34 0008 86B3      		in r24,54-0x20
+  35               	.LVL1:
+  36               	.LM6:
+  37 000a 8095      		com r24
+  38 000c 90E0      		ldi r25,lo8(0)
+  39 000e 20E0      		ldi r18,lo8(0)
+  40 0010 30E0      		ldi r19,hi8(0)
+  41 0012 00C0      		rjmp .L3
+  42               	.LVL2:
+  43               	.L4:
+  44               	.LM7:
+  45 0014 2F5F      		subi r18,lo8(-(1))
+  46 0016 3F4F      		sbci r19,hi8(-(1))
+  47               	.LM8:
+  48 0018 9595      		asr r25
+  49 001a 8795      		ror r24
+  50               	.L3:
+  51 001c 0097      		sbiw r24,0
+  52 001e 01F4      		brne .L4
+  53               	.LM9:
+  54 0020 23B9      		out 35-0x20,r18
+  55 0022 00C0      		rjmp .L2
+  56               	/* epilogue: frame size=0 */
+  57               	/* epilogue: noreturn */
+  58               	/* epilogue end (size=0) */
+  59               	/* function main size 18 (18) */
+  60               	.LFE6:
+  86               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 encoder.c
+C:\users\student\Temp/ccnev4xi.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/ccnev4xi.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/ccnev4xi.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/ccnev4xi.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/ccnev4xi.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/ccnev4xi.s:19     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

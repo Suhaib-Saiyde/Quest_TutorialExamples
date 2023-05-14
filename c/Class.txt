@@ -1,0 +1,4 @@
+Sl No.  Roll Number  Name               Mark 1  Mark 2  Mark 3  Total  Average  Percentage
+1.      2            Ravi             79.00   80.00   79.00  238.00  79.33   79.33
+2.      3            Ajith             79.00   80.00   78.00  237.00  79.00   79.00
+3.      1            Suhaib             78.00   77.00   79.00  234.00  78.00   78.00

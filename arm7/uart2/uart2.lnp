@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "uart2.o" --strict --scatter "uart2.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\uart2.map" -o "uart2.axf"

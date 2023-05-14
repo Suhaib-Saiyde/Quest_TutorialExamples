@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "bling2.o" --strict --scatter "bling2.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\bling2.map" -o "bling2.axf"

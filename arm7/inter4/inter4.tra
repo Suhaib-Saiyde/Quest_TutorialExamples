@@ -1,0 +1,20 @@
+*** Creating Trace Output File 'inter4.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"inter4.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "inter4.o" --strict --scatter "inter4.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\inter4.map" -o "inter4.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'inter4.axf'
+### ADS-LD Command File: 'inter4.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'inter4.lnp', Handle=0x00000270
+### Writing '.lnp' file
+### ADS-LD Command file 'inter4.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

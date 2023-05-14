@@ -1,0 +1,305 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.33 build 59893 
+                                                                                               Fri Jan  1 07:21:00 2021
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	16F876A
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	maintext,global,class=CODE,split=1,delta=2
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     7                           	dabs	1,0x7E,2
+     8  0000                     	;# 
+     9  0001                     	;# 
+    10  0002                     	;# 
+    11  0003                     	;# 
+    12  0004                     	;# 
+    13  0005                     	;# 
+    14  0006                     	;# 
+    15  0007                     	;# 
+    16  000A                     	;# 
+    17  000B                     	;# 
+    18  000C                     	;# 
+    19  000D                     	;# 
+    20  000E                     	;# 
+    21  000E                     	;# 
+    22  000F                     	;# 
+    23  0010                     	;# 
+    24  0011                     	;# 
+    25  0012                     	;# 
+    26  0013                     	;# 
+    27  0014                     	;# 
+    28  0015                     	;# 
+    29  0015                     	;# 
+    30  0016                     	;# 
+    31  0017                     	;# 
+    32  0018                     	;# 
+    33  0019                     	;# 
+    34  001A                     	;# 
+    35  001B                     	;# 
+    36  001B                     	;# 
+    37  001C                     	;# 
+    38  001D                     	;# 
+    39  001E                     	;# 
+    40  001F                     	;# 
+    41  0081                     	;# 
+    42  0085                     	;# 
+    43  0086                     	;# 
+    44  0087                     	;# 
+    45  008C                     	;# 
+    46  008D                     	;# 
+    47  008E                     	;# 
+    48  0091                     	;# 
+    49  0092                     	;# 
+    50  0093                     	;# 
+    51  0094                     	;# 
+    52  0098                     	;# 
+    53  0099                     	;# 
+    54  009C                     	;# 
+    55  009D                     	;# 
+    56  009E                     	;# 
+    57  009F                     	;# 
+    58  010C                     	;# 
+    59  010D                     	;# 
+    60  010E                     	;# 
+    61  010F                     	;# 
+    62  018C                     	;# 
+    63  018D                     	;# 
+    64  0007                     _PORTC	set	7
+    65  0006                     _PORTB	set	6
+    66  0087                     _TRISC	set	135
+    67  0430                     _TRISB0	set	1072
+    68  0431                     _TRISB1	set	1073
+    69  0432                     _TRISB2	set	1074
+    70                           
+    71                           	psect	maintext
+    72  07E5                     __pmaintext:	
+    73                           ; #config settings
+    74                           
+    75                           
+    76                           ;psect for function _main
+    77  0000                     
+    78 ;;
+    79 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+    80 ;;
+    81 ;; *************** function _main *****************
+    82 ;; Defined at:
+    83 ;;		line 16 in file "enc-dec.c"
+    84 ;; Parameters:    Size  Location     Type
+    85 ;;		None
+    86 ;; Auto vars:     Size  Location     Type
+    87 ;;  a               1    0        unsigned char 
+    88 ;; Return value:  Size  Location     Type
+    89 ;;		None               void
+    90 ;; Registers used:
+    91 ;;		wreg, status,2, status,0
+    92 ;; Tracked objects:
+    93 ;;		On entry : 17F/0
+    94 ;;		On exit  : 0/0
+    95 ;;		Unchanged: 0/0
+    96 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+    97 ;;      Params:         0       0       0       0       0
+    98 ;;      Locals:         0       0       0       0       0
+    99 ;;      Temps:          1       0       0       0       0
+   100 ;;      Totals:         1       0       0       0       0
+   101 ;;Total ram usage:        1 bytes
+   102 ;; This function calls:
+   103 ;;		Nothing
+   104 ;; This function is called by:
+   105 ;;		Startup code after reset
+   106 ;; This function uses a non-reentrant model
+   107 ;;
+   108  07E5                     _main:	
+   109                           
+   110                           ;enc-dec.c: 18: char a;
+   111                           ;enc-dec.c: 19: TRISB0=1;
+   112                           
+   113                           ;incstack = 0
+   114                           ; Regs used in _main: [wreg+status,2+status,0]
+   115  07E5  1683               	bsf	3,5	;RP0=1, select bank1
+   116  07E6  1303               	bcf	3,6	;RP1=0, select bank1
+   117  07E7  1406               	bsf	6,0	;volatile
+   118                           
+   119                           ;enc-dec.c: 20: TRISB1=1;
+   120  07E8  1486               	bsf	6,1	;volatile
+   121                           
+   122                           ;enc-dec.c: 21: TRISB2=1;
+   123  07E9  1506               	bsf	6,2	;volatile
+   124                           
+   125                           ;enc-dec.c: 22: TRISC=0x00;
+   126  07EA  0187               	clrf	7	;volatile
+   127                           
+   128                           ;enc-dec.c: 23: PORTC=0x00;
+   129  07EB  1283               	bcf	3,5	;RP0=0, select bank0
+   130  07EC  1303               	bcf	3,6	;RP1=0, select bank0
+   131  07ED  0187               	clrf	7	;volatile
+   132  07EE                     l479:	
+   133                           ;enc-dec.c: 24: while(1)
+   134                           
+   135                           
+   136                           ;enc-dec.c: 25: {
+   137                           ;enc-dec.c: 26: PORTC=1<<((~PORTB)&0x07);
+   138  07EE  3001               	movlw	1
+   139  07EF  00F0               	movwf	??_main
+   140  07F0  0906               	comf	6,w	;volatile
+   141  07F1  3907               	andlw	7
+   142  07F2  3E01               	addlw	1
+   143  07F3  2FF6               	goto	u14
+   144  07F4                     u15:	
+   145  07F4  1003               	clrc
+   146  07F5  0DF0               	rlf	??_main,f
+   147  07F6                     u14:	
+   148  07F6  3EFF               	addlw	-1
+   149  07F7  1D03               	skipz
+   150  07F8  2FF4               	goto	u15
+   151  07F9  0870               	movf	??_main,w
+   152  07FA  0087               	movwf	7	;volatile
+   153  07FB  2FEE               	goto	l479
+   154  07FC                     __end_of_main:	
+   155  007E                     btemp	set	126	;btemp
+   156  007E                     wtemp	set	126
+   157  007E                     wtemp0	set	126
+   158  0080                     wtemp1	set	128
+   159  0082                     wtemp2	set	130
+   160  0084                     wtemp3	set	132
+   161  0086                     wtemp4	set	134
+   162  0088                     wtemp5	set	136
+   163  007F                     wtemp6	set	127
+   164  007E                     ttemp	set	126
+   165  007E                     ttemp0	set	126
+   166  0081                     ttemp1	set	129
+   167  0084                     ttemp2	set	132
+   168  0087                     ttemp3	set	135
+   169  007F                     ttemp4	set	127
+   170  007E                     ltemp	set	126
+   171  007E                     ltemp0	set	126
+   172  0082                     ltemp1	set	130
+   173  0086                     ltemp2	set	134
+   174  0080                     ltemp3	set	128
+   175                           
+   176                           	psect	cinit
+   177  07FC                     start_initialization:	
+   178  07FC                     __initialization:	
+   179  07FC                     end_of_initialization:	
+   180                           ;End of C runtime variable initialization code
+   181                           
+   182  07FC                     __end_of__initialization:	
+   183  07FC  0183               	clrf	3
+   184  07FD  120A  118A  2FE5   	ljmp	_main	;jump to C main() function
+   185                           
+   186                           	psect	cstackCOMMON
+   187  0070                     __pcstackCOMMON:	
+   188  0070                     ?_main:	
+   189  0070                     ??_main:	
+   190                           ; 0 bytes @ 0x0
+   191                           
+   192                           
+   193                           ; 0 bytes @ 0x0
+   194  0070                     	ds	1
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      1       1
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0       0
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      1       1       1        7.1%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+ABS                  0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK3            60      0       0       8        0.0%
+BANK3               60      0       0       9        0.0%
+BITBANK2            60      0       0      10        0.0%
+BANK2               60      0       0      11        0.0%
+DATA                 0      0       0      12        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Fri Jan  1 07:21:00 2021
+
+            __CFG_CP$OFF 0000                       u14 07F6                       u15 07F4  
+                    l479 07EE             __CFG_CPD$OFF 0000             __CFG_FOSC$XT 0000  
+           __CFG_LVP$OFF 0000             __CFG_WRT$OFF 0000                     _main 07E5  
+                   btemp 007E                     ltemp 007E                     start 0000  
+                   ttemp 007E                     wtemp 007E                    ?_main 0070  
+          __CFG_WDTE$OFF 0000                    _PORTB 0006                    _PORTC 0007  
+                  _TRISC 0087           __CFG_BOREN$OFF 0000                    ltemp0 007E  
+                  ltemp1 0082                    ltemp2 0086                    ltemp3 0080  
+                  ttemp0 007E                    ttemp1 0081                    ttemp2 0084  
+                  ttemp3 0087                    ttemp4 007F                    status 0003  
+                  wtemp0 007E                    wtemp1 0080                    wtemp2 0082  
+                  wtemp3 0084                    wtemp4 0086                    wtemp5 0088  
+                  wtemp6 007F          __initialization 07FC             __end_of_main 07FC  
+                 ??_main 0070                   _TRISB0 0430                   _TRISB1 0431  
+                 _TRISB2 0432           __CFG_PWRTE$OFF 0000  __end_of__initialization 07FC  
+         __pcstackCOMMON 0070               __pmaintext 07E5     end_of_initialization 07FC  
+    start_initialization 07FC                ___latbits 0002            __size_of_main 0017  

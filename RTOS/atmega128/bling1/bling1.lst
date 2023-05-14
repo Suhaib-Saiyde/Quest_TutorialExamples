@@ -1,0 +1,95 @@
+   1               		.file	"bling1.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	main
+  19               	main:
+  20               	.LFB6:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LM2:
+  25 0000 8FEF      		ldi r24,lo8(-1)
+  26 0002 8ABB      		out 58-0x20,r24
+  27               	.LVL0:
+  28               	.L2:
+  29               	.LM3:
+  30 0004 8FEF      		ldi r24,lo8(-1)
+  31               	.LVL1:
+  32 0006 8BBB      		out 59-0x20,r24
+  33 0008 28E8      		ldi r18,lo8(5000)
+  34 000a 33E1      		ldi r19,hi8(5000)
+  35               	.LVL2:
+  36               	.L3:
+  37               	.LBB18:
+  38               	.LBB19:
+  39               	.LBB20:
+  40               	.LBB21:
+  41               	.LM4:
+  42 000c 88EC      		ldi r24,lo8(200)
+  43 000e 90E0      		ldi r25,hi8(200)
+  44               	.LVL3:
+  45               	/* #APP */
+  46 0010 0197      		1: sbiw r24,1
+  47 0012 01F4      		brne 1b
+  48               	/* #NOAPP */
+  49               	.LBE21:
+  50               	.LBE20:
+  51               	.LM5:
+  52 0014 2150      		subi r18,lo8(-(-1))
+  53 0016 3040      		sbci r19,hi8(-(-1))
+  54               	.LM6:
+  55 0018 01F4      		brne .L3
+  56               	.LBE19:
+  57               	.LBE18:
+  58               	.LM7:
+  59 001a 1BBA      		out 59-0x20,__zero_reg__
+  60 001c 28E8      		ldi r18,lo8(5000)
+  61 001e 33E1      		ldi r19,hi8(5000)
+  62               	.LVL4:
+  63               	.L5:
+  64               	.LBB22:
+  65               	.LBB23:
+  66               	.LBB24:
+  67               	.LBB25:
+  68               	.LM8:
+  69 0020 88EC      		ldi r24,lo8(200)
+  70 0022 90E0      		ldi r25,hi8(200)
+  71               	.LVL5:
+  72               	/* #APP */
+  73 0024 0197      		1: sbiw r24,1
+  74 0026 01F4      		brne 1b
+  75               	/* #NOAPP */
+  76               	.LBE25:
+  77               	.LBE24:
+  78               	.LM9:
+  79 0028 2150      		subi r18,lo8(-(-1))
+  80 002a 3040      		sbci r19,hi8(-(-1))
+  81               	.LM10:
+  82 002c 01F4      		brne .L5
+  83 002e 00C0      		rjmp .L2
+  84               	.LBE23:
+  85               	.LBE22:
+  86               	/* epilogue: frame size=0 */
+  87               	/* epilogue: noreturn */
+  88               	/* epilogue end (size=0) */
+  89               	/* function main size 32 (32) */
+  90               	.LFE6:
+ 116               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 bling1.c
+C:\users\student\Temp/cc5AwdTy.s:2      *ABS*:0000003f __SREG__
+C:\users\student\Temp/cc5AwdTy.s:3      *ABS*:0000003e __SP_H__
+C:\users\student\Temp/cc5AwdTy.s:4      *ABS*:0000003d __SP_L__
+C:\users\student\Temp/cc5AwdTy.s:5      *ABS*:00000000 __tmp_reg__
+C:\users\student\Temp/cc5AwdTy.s:6      *ABS*:00000001 __zero_reg__
+C:\users\student\Temp/cc5AwdTy.s:19     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

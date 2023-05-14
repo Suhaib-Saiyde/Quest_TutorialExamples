@@ -1,0 +1,8 @@
+a=open("test.py","w+")
+b=a.write("not today")
+d=a.tell()
+print(d)
+print(b)
+a.seek(,)
+c=a.read()
+print(c)
